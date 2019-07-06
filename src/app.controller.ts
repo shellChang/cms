@@ -7,10 +7,9 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  @Render('index.html')
+  @Render('index')
   getHello(@Response() res): any {
-    // res.sendFile(join(__dirname,'../src/views','index.html'))
-      // return this.appService.getHello();
+    // res.sendFile(join(__dirname,'../public/views','index.html'))
+      return this.appService.getHello();
   }
-    // res.sendFile(join(__dirname,'../src/views','index.html'))}
 }
