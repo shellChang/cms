@@ -11,9 +11,9 @@ const sassLoader = require('sass-loader');
 // const extractSCSS = new ExtractTextPlugin('stylesheets/[name]-two.css');
 
 module.exports = {
-  // entry: ['webpack/hot/poll?100', './src/main.ts'],
+  entry: ['webpack/hot/poll?100', './static/js/index.js'],
   watch: true,
-  target: 'node',
+  target: 'web',
   externals: [
     nodeExternals({
       whitelist: ['webpack/hot/poll?100'],
@@ -21,23 +21,20 @@ module.exports = {
   ],
   module: {
     rules: [
-      {
-        test: /.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-      {
-        test: /.scss$/,
-        use: 'css-loader!style-loader!posscss-loader!sass-loader',
-        include: path.resolve(__dirname,"src/styles.scss"),
-      },
       // {
-      //   test: /\.scss$/,
-      //   use: ExtractTextPlugin.extract({
-      //     fallback: "css-loader!style-loader!posscss-loader",
-      //     use: "sass-loader"
-      //   })
-      // }
+      //   test: /.tsx?$/,
+      //   use: 'ts-loader',
+      //   exclude: /node_modules/,
+      // },
+      {
+        test: /\.css$/,
+        use:['style-loader', 'css-loader']
+      },
+      {
+          test: /\.scss$/,
+          use: ['style-loader', 'css-loader','postcss-loader','sass-loader'],
+          include: path.resolve(__dirname,"src/styles.scss"),
+      }
     ],
   },
   mode: 'development',
@@ -47,7 +44,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new htmlWebpackPlugin({
-      template: './src/assets/views/index.html'
+      template: path.join(__dirname, 'src/assets/views/index.html')
     })
   ],
   output: {
@@ -57,6 +54,10 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
-    port: 9000
+    port: 9000,
+    host: '127.0.0.1',
+    hot: true,
+    index: 'index.html',
+    open: true
   }
 };
