@@ -1,3 +1,4 @@
+/** 静态资源的打包配置 */
 const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
@@ -11,9 +12,9 @@ const sassLoader = require('sass-loader');
 // const extractSCSS = new ExtractTextPlugin('stylesheets/[name]-two.css');
 
 module.exports = {
-  // entry: ['webpack/hot/poll?100', './src/main.ts'],
+  entry: ['webpack/hot/poll?100', './static/index.js', './static/styles.scss'],
   watch: true,
-  target: 'node',
+  target: 'web',
   externals: [
     nodeExternals({
       whitelist: ['webpack/hot/poll?100'],
@@ -21,23 +22,16 @@ module.exports = {
   ],
   module: {
     rules: [
-      {
-        test: /.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
+      // {
+      //   test: /.tsx?$/,
+      //   use: 'ts-loader',
+      //   exclude: /node_modules/,
+      // },
       {
         test: /.scss$/,
         use: 'css-loader!style-loader!posscss-loader!sass-loader',
         include: path.resolve(__dirname,"src/styles.scss"),
-      },
-      // {
-      //   test: /\.scss$/,
-      //   use: ExtractTextPlugin.extract({
-      //     fallback: "css-loader!style-loader!posscss-loader",
-      //     use: "sass-loader"
-      //   })
-      // }
+      }
     ],
   },
   mode: 'development',
@@ -47,12 +41,12 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new htmlWebpackPlugin({
-      template: './src/assets/views/index.html'
+      template: './static/index.html'
     })
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'server.js',
+    filename: '[name]-bundles.js',
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),

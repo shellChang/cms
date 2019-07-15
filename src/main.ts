@@ -4,7 +4,7 @@
  * @update: zb
  * @Date: 2019-07-04 16:25:33
  * @LastEditors: zb
- * @LastEditTime: 2019-07-05 12:16:46
+ * @LastEditTime: 2019-07-08 08:40:26
  */
 declare const module: any;
 import { NestFactory } from '@nestjs/core';
@@ -12,7 +12,6 @@ import { NestExpressApplication, ExpressAdapter } from '@nestjs/platform-express
 import { AppModule } from './app.module';
 import { join } from 'path'
 import * as mustacheExpress from 'mustache-express';
-// import * as serveStatic from 'serve-static';
 
 async function bootstrap() {
   const app: NestExpressApplication = await NestFactory.create<NestExpressApplication>(AppModule);
