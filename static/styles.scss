@@ -1,9 +1,14 @@
+
 /*
  * @description: 样式文件引用
  * @author: zb
  * @update: zb
  * @Date: 2019-07-05 12:14:35
  * @LastEditors: zb
- * @LastEditTime: 2019-07-08 08:42:07
+ * @LastEditTime: 2019-07-15 13:10:21
  */
- @import './style/index.scss'
+// Third Library
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+@import './assets/style/index'
+

@@ -4,6 +4,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const cssLoader = require('css-loader');
 const styleLoader = require('style-loader');
@@ -11,13 +12,18 @@ const postcssLoader = require('postcss-loader');
 const sassLoader = require('sass-loader');
 // const extractSCSS = new ExtractTextPlugin('stylesheets/[name]-two.css');
 
+
 module.exports = {
-  entry: ['webpack/hot/poll?100', './static/index.js', './static/styles.scss'],
+  entry: {
+    main: ['webpack/hot/poll?100'],
+    index: ['./static/js/index.js'],
+    style: ['./static/styles.scss']
+  },
   watch: true,
   target: 'web',
   externals: [
     nodeExternals({
-      whitelist: ['webpack/hot/poll?100'],
+      whitelist: ['webpack/hot/poll?100', /\.(?!(?:jsx?|json)$).{1,5}$/i],
     }),
   ],
   module: {
@@ -28,29 +34,60 @@ module.exports = {
       //   exclude: /node_modules/,
       // },
       {
-        test: /.scss$/,
-        use: 'css-loader!style-loader!posscss-loader!sass-loader',
-        include: path.resolve(__dirname,"src/styles.scss"),
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        include: [path.resolve(__dirname, "static/styles.scss")
+      ],
       }
     ],
   },
   mode: 'development',
   resolve: {
     extensions: ['.tsx', '.ts', '.js', 'html', 'css', 'scss', 'jpg'],
+    modules: [
+      "./node_modules"
+    ],
+    symlinks: true,
+    mainFields: [
+      "browser",
+      "module",
+      "main"
+    ]
   },
   plugins: [
+    new CleanWebpackPlugin({
+      root: path.resolve(__dirname, ''),     //根目录
+      verbose: true,                         //是否启用控制台输出信息
+      dry: false,                            //设置为false,启用删除文件
+      cleanAfterEveryBuildPatterns: ['dist']
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new htmlWebpackPlugin({
-      template: './static/index.html'
+      template: path.join(__dirname, 'static/assets/views/index.html')
     })
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name]-bundles.js',
+    filename: '[name].bundle.js',
+    chunkFilename: "[id].chunk.js",
+    crossOriginLoading: false
   },
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
-    port: 9000
+    port: 9000,
+    host: '127.0.0.1',
+    hot: true,
+    hotOnly: true,
+    index: 'index.html',
+    open: true,
+    watchOptions: {
+      poll: true
+    }
   }
 };
