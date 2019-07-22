@@ -17,17 +17,12 @@ const copyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: {
-    main: ['webpack/hot/poll?100'],
     index: ['./static/index.js'],
     style: ['./static/styles.scss']
   },
   watch: true,
   target: 'web',
-  externals: [
-    nodeExternals({
-      whitelist: ['webpack/hot/poll?100', /\.(?!(?:jsx?|json)$).{1,5}$/i],
-    }),
-  ],
+  externals: [],
   module: {
     rules: [
       // {
