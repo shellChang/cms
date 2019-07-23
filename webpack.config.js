@@ -12,6 +12,7 @@ const postcssLoader = require('postcss-loader');
 const sassLoader = require('sass-loader');
 const htmlLoader = require('html-withimg-loader');
 const copyWebpackPlugin = require('copy-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // const extractSCSS = new ExtractTextPlugin('stylesheets/[name]-two.css');
 
 
@@ -23,6 +24,20 @@ module.exports = {
   watch: true,
   target: 'web',
   externals: [],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    },
+    runtimeChunk: {
+      name: 'runtime'
+  }
+  },
   module: {
     rules: [
       // {
@@ -51,6 +66,17 @@ module.exports = {
             loader: 'html-withimg-loader',
           }
         ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              publicPath: ''
+            }
+          }
+        ]
       }
     ],
   },
@@ -77,10 +103,10 @@ module.exports = {
     new htmlWebpackPlugin({
       template: path.join(__dirname, 'static/assets/views/index.html')
     }),
-    new webpack.optimize.CommonsChunkPlugin(),
     new copyWebpackPlugin(),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new BundleAnalyzerPlugin()
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -94,7 +120,7 @@ module.exports = {
     compress: true,
     port: 9000,
     host: '127.0.0.1',
-    hot: true,
+    hot: false,
     hotOnly: false,
     index: 'index.html',
     open: true,

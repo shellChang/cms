@@ -1,0 +1,27 @@
+// Retrieve color Sass maps
+@function color($key: "blue") {
+    @return map-get($colors, $key);
+}
+
+@function theme-color($key: "primary") {
+    @return map-get($theme-colors, $key);
+}
+
+@function gray($key: "100") {
+    @return map-get($grays, $key);
+}
+
+//  get pading width
+@function pading-width($size: "md") {
+    $width: null;
+    @if $size=="md" {
+        $width : 24px
+    } @else if  $size=="sm" {
+        $width : 8px
+    } @else if  $size=="lg" {
+        $width : 48px
+    } @else{
+        @warn "#{$size} must be md or sm or lg";
+    }
+    @return $width;
+}

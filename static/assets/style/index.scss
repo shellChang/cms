@@ -1,13 +1,6 @@
-
-.app-header{
-    width: 100%;
-}
+@import './base//index';
+@import './variables';
 
 
-body{
-    background-color: red;
-}
+@import './components/index';
 
-.box{
-    background: red;
-}
