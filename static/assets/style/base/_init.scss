@@ -99,3 +99,7 @@ select,
 textarea {
     font-size: 100%;
 }
+
+*::selection{
+    background-color: rgba(0,0,0,0);
+}

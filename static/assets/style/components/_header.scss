@@ -1,6 +1,37 @@
-.#{$app_prefix}-header{
+.#{$app_prefix}-header {
     background: $main-theme;
     height: $header-height;
     padding: pading-width("sm");
     vertical-align: middle;
-};
+    line-height: $header-height - 2 * 8px;
+
+    >nav {
+        position: relative;
+        height: 100%;
+        .#{$app_prefix}-logo{
+            height: 100%;
+            max-width: 200px;
+            float: left;
+            cursor: pointer;
+            padding-right: pading-width("md");
+        }
+        >ul {
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100%;
+
+            >li {
+                display: inline-block;
+                line-height: 32px;
+                height: 100%;
+                padding: pading-width("sm");
+                text-align: center;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+;
