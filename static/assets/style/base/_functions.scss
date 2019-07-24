@@ -11,17 +11,7 @@
     @return map-get($grays, $key);
 }
 
-//  get pading width
-@function pading-width($size: "md") {
-    $width: null;
-    @if $size=="md" {
-        $width : 24px
-    } @else if  $size=="sm" {
-        $width : 8px
-    } @else if  $size=="lg" {
-        $width : 48px
-    } @else{
-        @warn "#{$size} must be md or sm or lg";
-    }
-    @return $width;
-}
+
+// @function getWidth($size) {
+//     @media screen and  (min-width: 1024px){ }
+// }

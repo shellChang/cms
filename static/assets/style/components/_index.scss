@@ -1,1 +1,8 @@
-@import './header'
+@import './header';
+
+
+.#{$app_prefix}-app {
+    height: 100%;
+    overflow-x: hidden;
+    margin: auto auto;
+}

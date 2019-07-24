@@ -1,14 +1,15 @@
 
 /*
- * @description: 样式文件引用
+ * @description: 样式文件引用,这个是公用样式文件，每个页面都要引用
  * @author: zb
  * @update: zb
  * @Date: 2019-07-05 12:14:35
  * @LastEditors: zb
- * @LastEditTime: 2019-07-23 20:07:23
+ * @LastEditTime: 2019-07-24 18:35:17
  */
 // Third Library
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 @import './assets/style/index'
 
+// @import '~fullpage.js/dist/fullpage.css';

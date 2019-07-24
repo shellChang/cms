@@ -1,0 +1,22 @@
+//  公共的混合样式
+
+// 生成padding、 margin 的 mixins
+@mixin padding-right-sm {
+    padding-right: map-get($gutters, "sm");
+}
+
+@mixin padding-right-md {
+    padding-right: map-get($gutters, "md");
+}
+
+@mixin padding-right-lg {
+    padding-right: map-get($gutters, "lg");
+}
+
+@mixin padding-sm {
+    padding: map-get($gutters, "sm") map-get($gutters, "sm");
+}
+
+@mixin padding-md {
+    padding: map-get($gutters, "md") map-get($gutters, "md");
+}

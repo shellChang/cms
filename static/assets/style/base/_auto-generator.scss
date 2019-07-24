@@ -1,0 +1,53 @@
+
+// 生成padding、margin 、text的css样式
+
+@each $key, $value in $gutters {
+    .margin-#{$key} {
+      margin: $value $value;
+    }
+    .margin-left-#{$key} {
+      margin-left: $value ;
+    }
+    .margin-right-#{$key} {
+      margin-right: $value ;
+    }
+    .margin-bottom-#{$key} {
+      margin-bottom: $value ;
+    }
+    .margin-top-#{$key} {
+      margin-top: $value;
+    }
+    .margin-horizontal-#{$key} {
+      margin: 0px $value;
+    }
+    .margin-vertical-#{$key} {
+      margin: 0px $value;
+    }
+  
+    .padding-#{$key} {
+      padding: $value $value;
+    }
+    .padding-left-#{$key} {
+      padding-left: $value ;
+    }
+    .padding-right-#{$key} {
+      padding-right: $value ;
+    }
+    .padding-bottom-#{$key} {
+      padding-bottom: $value ;
+    }
+    .padding-top-#{$key} {
+      padding-top: $value;
+    }
+    .padding-horizontal-#{$key} {
+      padding: 0px $value;
+    }
+    .padding-vertical-#{$key} {
+      padding: 0px $value;
+    }
+  
+    .text-#{$key} {
+      font-size: $value;
+    }
+  };
+

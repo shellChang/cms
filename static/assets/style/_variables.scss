@@ -1,3 +1,7 @@
+// 项目的前缀
+
+$app_prefix : 'ke-nuo';
+
 // Color system
 
 $white:    #fff !default;
@@ -86,17 +90,52 @@ $theme-colors: map-merge(
   $theme-colors
 );
 
+// 生成风格颜色
+
+@each $key, $value in $theme-colors {
+   .bg-#{$key} {
+      background-color: $value;
+   }
+
+   .text-#{$key} {
+     color: $value;
+ }
+}
 
 
-$app_prefix : 'ke-nuo';
+// 像素单位，默认以8px为最基础的单位
 
-$header-height: 64px;
-$footer-height: 120px;
+$gutter : 8px;
+
+$gutter-sm : $gutter;
+
+$gutter-md: $gutter * 2;
+
+$gutter-lg: $gutter * 3;
+
+$gutters : () !default;
+
+$gutters : map-merge(
+  (
+  sm : $gutter-sm ,
+  md : $gutter-md ,
+  lg : $gutter-lg
+  ),
+  $gutters
+);
+
+// 屏幕尺寸大小
+$phone-screen: 768px;
+
+$ipad-screen: 1024px;
+
+
+
+// @media screen and  (min-width: 1024px)
 
 //  各设备屏幕尺寸
-$width: (sm : 375px,   
-         md : 768px,
-         lg : 1024px);
+// $width: (sm : 375px,
+//          md : 768px,
+//          lg : 1024px
+//         );
 
-
-$main-theme : color("purple");

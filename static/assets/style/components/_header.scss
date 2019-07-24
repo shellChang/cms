@@ -1,19 +1,29 @@
+$header-height: 64px;
+
 .#{$app_prefix}-header {
-    background: $main-theme;
+    background-color: rgba(theme-color(), .1);
+    box-sizing: content-box;
     height: $header-height;
-    padding: pading-width("sm");
+    padding: $gutter-lg $gutter-sm;
     vertical-align: middle;
-    line-height: $header-height - 2 * 8px;
+    line-height: $header-height - 2 * $gutter;
+    position: sticky;
+    top: $header-height;
 
     >nav {
         position: relative;
         height: 100%;
         .#{$app_prefix}-logo{
             height: 100%;
-            max-width: 200px;
             float: left;
             cursor: pointer;
-            padding-right: pading-width("md");
+            @include padding-right-md;
+            border-radius: 4px;
+            >img{
+                position: relative;
+                height: 100%;
+                max-width: 200px;
+            }
         }
         >ul {
             position: relative;
@@ -24,14 +34,17 @@
 
             >li {
                 display: inline-block;
-                line-height: 32px;
+                line-height: 31px;
                 height: 100%;
-                padding: pading-width("sm");
+                @include padding-md;
                 text-align: center;
                 cursor: pointer;
+                border-bottom: 1px solid rgba(#000000,0);
+                transition: border-bottom 1s ease-in-out;
+                &:hover{
+                    border-bottom: 1px solid theme-color();
+                }
             }
         }
     }
-}
-
-;
+};
