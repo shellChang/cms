@@ -2198,10 +2198,10 @@ crypto-random-string@^1.0.0:
   resolved "https://registry.npm.taobao.org/crypto-random-string/download/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
   integrity sha1-ojD2T1aDEOFJgAmUB5DsmVRbyn4=
 
-css-loader@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npm.taobao.org/css-loader/download/css-loader-3.0.0.tgz#bdd48a4921eefedf1f0a55266585944d4e5efc63"
-  integrity sha1-vdSKSSHu/t8fClUmZYWUTU5e/GM=
+css-loader@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.npm.taobao.org/css-loader/download/css-loader-3.2.0.tgz#bb570d89c194f763627fcf1f80059c6832d009b2"
+  integrity sha1-u1cNicGU92Nif88fgAWcaDLQCbI=
   dependencies:
     camelcase "^5.3.1"
     cssesc "^3.0.0"
@@ -2214,7 +2214,7 @@ css-loader@^3.0.0:
     postcss-modules-scope "^2.1.0"
     postcss-modules-values "^3.0.0"
     postcss-value-parser "^4.0.0"
-    schema-utils "^1.0.0"
+    schema-utils "^2.0.0"
 
 css-select@^1.1.0:
   version "1.2.0"
@@ -2928,6 +2928,14 @@ expect@^23.6.0:
     jest-matcher-utils "^23.6.0"
     jest-message-util "^23.4.0"
     jest-regex-util "^23.3.0"
+
+exports-loader@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.npm.taobao.org/exports-loader/download/exports-loader-0.7.0.tgz#84881c784dea6036b8e1cd1dac3da9b6409e21a5"
+  integrity sha1-hIgceE3qYDa44c0drD2ptkCeIaU=
+  dependencies:
+    loader-utils "^1.1.0"
+    source-map "0.5.0"
 
 express@4.17.1, express@^4.16.3, express@^4.17.1:
   version "4.17.1"
@@ -6625,6 +6633,11 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+raw-loader@~0.5.1:
+  version "0.5.1"
+  resolved "https://registry.npm.taobao.org/raw-loader/download/raw-loader-0.5.1.tgz#0c3d0beaed8a01c966d9787bf778281252a979aa"
+  integrity sha1-DD0L6u2KAclm2Xh793goElKpeao=
+
 rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
   version "1.2.8"
   resolved "https://registry.npm.taobao.org/rc/download/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
@@ -7067,6 +7080,13 @@ schema-utils@^2.0.0:
     ajv "^6.1.0"
     ajv-keywords "^3.1.0"
 
+script-loader@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.npm.taobao.org/script-loader/download/script-loader-0.7.2.tgz#2016db6f86f25f5cf56da38915d83378bb166ba7"
+  integrity sha1-IBbbb4byX1z1baOJFdgzeLsWa6c=
+  dependencies:
+    raw-loader "~0.5.1"
+
 scss-tokenizer@^0.2.3:
   version "0.2.3"
   resolved "https://registry.npm.taobao.org/scss-tokenizer/download/scss-tokenizer-0.2.3.tgz#8eb06db9a9723333824d3f5530641149847ce5d1"
@@ -7327,6 +7347,11 @@ source-map-url@^0.4.0:
   version "0.4.0"
   resolved "https://registry.npm.taobao.org/source-map-url/download/source-map-url-0.4.0.tgz#3e935d7ddd73631b97659956d55128e87b5084a3"
   integrity sha1-PpNdfd1zYxuXZZlW1VEo6HtQhKM=
+
+source-map@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.npm.taobao.org/source-map/download/source-map-0.5.0.tgz#0fe96503ac86a5adb5de63f4e412ae4872cdbe86"
+  integrity sha1-D+llA6yGpa213mP05BKuSHLNvoY=
 
 source-map@^0.4.2:
   version "0.4.4"

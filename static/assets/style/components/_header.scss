@@ -1,4 +1,4 @@
-@import '../index.scss';
+// @import '../index.scss';
 
 $header-height: 64px;
 
@@ -9,7 +9,7 @@ $header-height: 64px;
     padding: $gutter-lg $gutter-sm;
     vertical-align: middle;
     line-height: $header-height - 2 * $gutter;
-    position: sticky;
+    position: static;
     top: $header-height;
 
     >nav {

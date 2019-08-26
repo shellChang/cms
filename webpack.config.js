@@ -12,8 +12,7 @@ const sassLoader = require('sass-loader');
 const htmlLoader = require('html-withimg-loader');
 const copyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const SplitChunksPlugin =  require('webpack/lib/optimize/SplitChunksPlugin');
-const RuntimeChunksPlugin =  require('webpack/lib/optimize/RuntimeChunkPlugin');
+const webpack = require('webpack');
 // const extractSCSS = new ExtractTextPlugin('stylesheets/[name]-two.css');
 
 const getScssPath = function()  {
@@ -23,18 +22,18 @@ const getScssPath = function()  {
 
 module.exports = {
   entry: {
-    'mian.js': ['./static/index.ts'],
-    // 'main.style': ['./static/styles.scss'],
-    'index.js':['./static/service/ts/index.ts']
+    'main.js': ['./static/index.ts'],
+    'main.css': ['./static/index.scss'],
+    'route.index':['./static/service/ts/index.ts']
     // 'index.style':'./static/service/styles/index.scss'
   },
   watch: true,
-  content: path.resolve(__dirname), // 处理项目文件的基目录
+  context: path.resolve(__dirname), // 处理项目文件的基目录
   target: 'web',
   externals: [],
   optimization: {
     splitChunks: {
-      naming: true,
+      name: true,
       automaticNameDelimiter: '-',
       chunks: "async",
       minSize: 30000,
@@ -48,11 +47,11 @@ module.exports = {
           chunks: 'all',
           priority: -10
         },
-        styles: {
-          test: /\.css$/,
-          name: 'styles',
-          chunks: 'all'
-        },
+        // styles: {
+        //   test: /\.css$/,
+        //   name: 'styles',
+        //   chunks: 'all'
+        // },
         default: {
           minChunks: 2,
           priority: -20,
@@ -60,21 +59,27 @@ module.exports = {
         }
       }
     },
-    runtimeChunk: true
+    runtimeChunk: 'single'
   },
   module: {
+    noParse: (content) => {            //  让Webpack 忽略对部分没采用模块化的文件的递归解析和处理
+      return /(jquery|fullPage)\S*.js$/.test(content)
+    },
     rules: [
       {
-        test: /.tsx?$/,
+        test: require.resolve('fullpage.js'),
+        loader: 'exports-loader?window.fullpage!script-loader'
+        // test: /fullpage.js/,
+        // use: [ 'script-loader' ]
+      },
+      {
+        test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
       {
-        test: /\.js$/,
-        loader: "babel-loader",
-        noParse: (content)=> {            //  让Webpack 忽略对部分没采用模块化的文件的递归解析和处理
-          return /jquery/.test(content)
-        }
+        test: /\.(j|t)s$/,
+        loader: "babel-loader"
       },
       {
         test: /\.(sc|sa|c)ss$/,
@@ -87,11 +92,11 @@ module.exports = {
           },
           'css-loader',
           'postcss-loader',
-          'sass-loader'],
-        include: [path.resolve(__dirname, "static/styles.scss"),
-                  path.resolve(__dirname, "static/service/styles/index.scss")
-        ],
-        exclude: /node_modules/
+          'sass-loader']
+        // include: [path.resolve(__dirname, "static/index.scss"),
+        //           path.resolve(__dirname, "static/service/styles/index.scss")
+        // ],
+        // exclude: /node_modules/
       },
       {
         test: /\.html$/,
@@ -128,6 +133,7 @@ module.exports = {
       "main"
     ],
     alias: {
+      // '@': path.resolve(__dirname, "static/"),
       '@img': path.resolve(__dirname, "static/assets/img")
     },
     descriptionFiles: ['package.json'],  //  配置描述第三方模块的文件名称，也就是package.json 文件
@@ -146,11 +152,18 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      fullPage:'fullpage.js'
+    }),
     new htmlWebpackPlugin({
       template: path.join(__dirname, 'static/service/views/index.html'),
       chunks: [
+        'runtime',
+        'vendors',
         'main.js',
-        'index.js'
+        'main.css',
+        'route.index'
       ],
       minify: {
         minifyCSS: false,
@@ -158,7 +171,6 @@ module.exports = {
         collapseWhitespace: false
       }
     }),
-
     new copyWebpackPlugin()
   ],
   output: {
