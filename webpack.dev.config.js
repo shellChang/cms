@@ -3,8 +3,8 @@
  * @author: zb
  * @update: zb
  * @Date: 2019-07-24 09:16:55
- * @LastEditors: zb
- * @LastEditTime: 2019-07-24 17:21:57
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2019-08-23 14:46:47
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -42,7 +42,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     compress: true,
     port: 9000,
     host: '127.0.0.1',
-    hot: false,
+    hot: true ,
     hotOnly: false,
     index: 'index.html',
     open: true,

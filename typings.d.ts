@@ -1,7 +1,16 @@
+/**
+ * @description: 中文说明  ts变量声明
+ * @author: zb
+ * @update: zb
+ * @Date: 2019-07-24 09:16:55
+ * @LastEditors: zb
+ * @LastEditTime: 2019-07-24 17:21:57
+ */
 // declare var module: NodeModule;
 // interface NodeModule {
 //   id: string;
 // }
+
 
 interface WebpackRequire {
   <T>(path: string): T;

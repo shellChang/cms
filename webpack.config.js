@@ -12,34 +12,55 @@ const sassLoader = require('sass-loader');
 const htmlLoader = require('html-withimg-loader');
 const copyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const SplitChunksPlugin =  require('webpack/lib/optimize/SplitChunksPlugin');
+const RuntimeChunksPlugin =  require('webpack/lib/optimize/RuntimeChunkPlugin');
 // const extractSCSS = new ExtractTextPlugin('stylesheets/[name]-two.css');
+
+const getScssPath = function()  {
+
+}
+
+
 module.exports = {
   entry: {
     'mian.js': ['./static/index.ts'],
-    'main.style': ['./static/styles.scss']
+    // 'main.style': ['./static/styles.scss'],
+    'index.js':['./static/service/ts/index.ts']
+    // 'index.style':'./static/service/styles/index.scss'
   },
   watch: true,
+  content: path.resolve(__dirname), // 处理项目文件的基目录
   target: 'web',
   externals: [],
   optimization: {
     splitChunks: {
+      naming: true,
+      automaticNameDelimiter: '-',
+      chunks: "async",
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          chunks: 'all'
+          chunks: 'all',
+          priority: -10
         },
         styles: {
-          name: 'styles',
           test: /\.css$/,
-          chunks: 'all',
-          enforce: true,
+          name: 'styles',
+          chunks: 'all'
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
         }
       }
     },
-    runtimeChunk: {
-      name: 'runtime'
-    }
+    runtimeChunk: true
   },
   module: {
     rules: [
@@ -50,7 +71,10 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: "babel-loader"
+        loader: "babel-loader",
+        noParse: (content)=> {            //  让Webpack 忽略对部分没采用模块化的文件的递归解析和处理
+          return /jquery/.test(content)
+        }
       },
       {
         test: /\.(sc|sa|c)ss$/,
@@ -64,8 +88,10 @@ module.exports = {
           'css-loader',
           'postcss-loader',
           'sass-loader'],
-        include: [path.resolve(__dirname, "static/styles.scss")
+        include: [path.resolve(__dirname, "static/styles.scss"),
+                  path.resolve(__dirname, "static/service/styles/index.scss")
         ],
+        exclude: /node_modules/
       },
       {
         test: /\.html$/,
@@ -73,7 +99,8 @@ module.exports = {
           {
             loader: 'html-withimg-loader',
           }
-        ]
+        ],
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -90,20 +117,21 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', 'html', 'css', 'scss', 'jpg'],
-    modules: [
-      "./node_modules",
-
+    extensions: [ '.ts', 'scss','.js',  'css', 'jpg', 'html','.tsx'], // 导入语句没带文件后缀时， Webpack 会自动带上后缀后去尝试访问文件是否存在。
+    modules: [      //  配置Webpack 去哪些目录下寻找第三方模块, 默认只会去node_modules 目录下寻找
+      "node_modules",   
     ],
     symlinks: true,
-    mainFields: [
+    mainFields: [   // 配置在package.json文件读取的key值，从而引入相关配置文件
       "browser",
       "module",
       "main"
     ],
     alias: {
       '@img': path.resolve(__dirname, "static/assets/img")
-    }
+    },
+    descriptionFiles: ['package.json'],  //  配置描述第三方模块的文件名称，也就是package.json 文件
+    enforceExtension: false       //  导入语句是否必须带文件后缀
   },
   plugins: [
     new CleanWebpackPlugin({
@@ -120,19 +148,24 @@ module.exports = {
     }),
     new htmlWebpackPlugin({
       template: path.join(__dirname, 'static/service/views/index.html'),
-      chunks: [],
+      chunks: [
+        'main.js',
+        'index.js'
+      ],
       minify: {
-        minifyCSS: true,
-        minifyJS: true,
-        collapseWhitespace: true
+        minifyCSS: false,
+        minifyJS: false,
+        collapseWhitespace: false
       }
     }),
+
     new copyWebpackPlugin()
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    chunkFilename: "[id].chunk.js",
-    crossOriginLoading: false
+    chunkFilename: "[id].chunk.js", // 配置无入口的Chunk 在输出时的文件名称
+    // publicPath: '',  //..所有文件路径的前缀， 用于配置发布到线上资源的URL 前缀
+    crossOriginLoading: false   // 配置项目中JSONP的crossorigin
   }
 };
