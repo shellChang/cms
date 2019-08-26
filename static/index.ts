@@ -19,7 +19,3 @@ import * as $ from 'jquery';
 
 
 // import * as fullPage from "fullpage.js"
-// if (module.hot) {
-//     module.hot.accept();
-//     module.hot.dispose(() => app.close());
-// }
