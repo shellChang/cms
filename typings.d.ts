@@ -21,6 +21,6 @@ interface NodeRequire extends WebpackRequire {}
 
 declare var require: NodeRequire;
 declare var System: any;
-declare var $: (selector : string) => any;
+declare var $: (selector : string|Element|Document) => any;
 declare var fullPage: (containerSelector: string, options: object) => void
 
