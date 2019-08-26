@@ -1,7 +1,15 @@
-// declare var module: NodeModule;
-// interface NodeModule {
-//   id: string;
-// }
+/**
+ * @description: 中文说明  ts变量声明
+ * @author: zb
+ * @update: zb
+ * @Date: 2019-07-24 09:16:55
+ * @LastEditors: zb
+ * @LastEditTime: 2019-07-24 17:21:57
+ */
+declare var module: NodeModule;
+interface NodeModule {
+  id: string;
+}
 
 interface WebpackRequire {
   <T>(path: string): T;
@@ -14,4 +22,5 @@ interface NodeRequire extends WebpackRequire {}
 declare var require: NodeRequire;
 declare var System: any;
 declare var $: (selector : string) => any;
-declare var fullPage:any;
+declare var fullPage: (containerSelector: string, options: object) => void
+

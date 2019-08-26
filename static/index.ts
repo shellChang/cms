@@ -3,17 +3,8 @@
  * @author: zb
  * @update: zb
  * @Date: 2019-07-08 08:42:59
- * @LastEditors: zb
- * @LastEditTime: 2019-07-24 18:36:03
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2019-08-26 17:11:05
  */
 
 //  import Third lib
-import * as $ from 'jquery';
-
-// import * as FullPage from 'fullpage.js';
-
-// tslint:disable-next-line: semicolon
-// tslint:disable-next-line: no-console
-console.log(fullPage)
-
-export { $};
