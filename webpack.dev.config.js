@@ -47,6 +47,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     hotOnly: false,
     index: 'index.html',
     open: true,
+    inline: true,
     watchOptions: {
       poll: true
     }

@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-// tslint:disable-next-line: eofline
-import './full-page.ts';
-=======
+
 import '../styles/index.scss'
 
 const myFullpage = new fullPage('#fullpage', {
@@ -14,4 +11,4 @@ const myFullpage = new fullPage('#fullpage', {
     navigation: true, //是否显示导航（小圆点）
     navigationPosition: 'right', //设置小圆点位置 left right
   });
->>>>>>> c8c96947760f766d0277693d4748a1e7eed7ec8a
+
