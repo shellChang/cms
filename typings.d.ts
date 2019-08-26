@@ -6,11 +6,10 @@
  * @LastEditors: zb
  * @LastEditTime: 2019-07-24 17:21:57
  */
-// declare var module: NodeModule;
-// interface NodeModule {
-//   id: string;
-// }
-
+declare var module: NodeModule;
+interface NodeModule {
+  id: string;
+}
 
 interface WebpackRequire {
   <T>(path: string): T;
@@ -23,3 +22,4 @@ interface NodeRequire extends WebpackRequire {}
 declare var require: NodeRequire;
 declare var System: any;
 declare var $: (selector : string) => any;
+declare var fullPage: any;
