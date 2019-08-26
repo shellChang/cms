@@ -6,6 +6,7 @@
  * @LastEditors: zb
  * @LastEditTime: 2019-07-24 17:21:57
  */
+
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
@@ -42,7 +43,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     compress: true,
     port: 9000,
     host: '127.0.0.1',
-    hot: false,
+    hot: true,
     hotOnly: false,
     index: 'index.html',
     open: true,
@@ -70,6 +71,7 @@ module.exports = new Promise((resolve, reject) => {
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(
         new FriendlyErrorsPlugin({
+          
           compilationSuccessInfo: {
             messages: [
               `Your application is running here: http://${

@@ -1,4 +1,2 @@
-
-// import fullPage from './full-page';
-
-console.log('service-index');
+// tslint:disable-next-line: eofline
+import './full-page.ts';

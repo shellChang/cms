@@ -10,4 +10,10 @@
 //  import Third lib
 import * as $ from 'jquery';
 
-// import * as fullPage from "fullpage.js"
+// import * as FullPage from 'fullpage.js';
+
+// tslint:disable-next-line: semicolon
+// tslint:disable-next-line: no-console
+console.log(fullPage)
+
+export { $};
