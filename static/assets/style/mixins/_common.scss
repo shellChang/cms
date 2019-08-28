@@ -20,3 +20,11 @@
 @mixin padding-md {
     padding: map-get($gutters, "md") map-get($gutters, "md");
 }
+
+@mixin padding-horizonal-md {
+    padding: 0 map-get($gutters, "md");
+}
+
+@mixin padding-vertical-md {
+    padding: map-get($gutters, "md") 0;
+}

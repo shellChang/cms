@@ -96,7 +96,14 @@ module.exports = {
           },
           'css-loader',
           'postcss-loader',
-          'sass-loader']
+          'resolve-url-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              sourceMapContents: false
+            }
+          }]
         // include: [path.resolve(__dirname, "static/index.scss"),
         //           path.resolve(__dirname, "static/service/styles/index.scss")
         // ],
