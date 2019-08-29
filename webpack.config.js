@@ -70,10 +70,8 @@ module.exports = {
     },
     rules: [
       {
-        test: require.resolve('fullpage.js'),
+        test: require.resolve('fullpage.js/dist/fullpage.extensions.min.js'),
         loader: 'exports-loader?window.fullpage!script-loader'
-        // test: /fullpage.js/,
-        // use: [ 'script-loader' ]
       },
       {
         test: /\.tsx?$/,
@@ -166,7 +164,7 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
-      fullPage:'fullpage.js'
+      fullPage:'fullpage.js/dist/fullpage.extensions.min.js'
     }),
     new htmlWebpackPlugin({
       template: path.join(__dirname, 'static/service/views/index.html'),

@@ -9,6 +9,8 @@
  */
 
 //  import Third lib
+import   'fullpage.js/vendors/scrolloverflow'
+import 'fullpage.js/dist/fullpage.extensions.min'
 
 // Common Script
 import {headerInstance} from '@/common/script/index';
