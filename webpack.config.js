@@ -25,7 +25,7 @@ module.exports = {
   entry: {
     'main.js': ['./static/index.ts'],
     'main.css': ['./static/index.scss'],
-    'route.index':['./static/service/ts/index.ts']
+    'route.index':['./static/service/script/index.ts']
     // 'index.style':'./static/service/styles/index.scss'
   },
   watch: true,
@@ -82,7 +82,7 @@ module.exports = {
         include: [path.resolve(__dirname, "static")]
       },
       {
-        test: /\.(j|t)s$/,
+        test: /\.js$/,
         loader: "babel-loader"
       },
       {
@@ -145,7 +145,7 @@ module.exports = {
       "main"
     ],
     alias: {
-      // '@': path.resolve(__dirname, "static/"),
+      '@': path.resolve(__dirname, "static/"),
       '@img': path.resolve(__dirname, "static/assets/img")
     },
     descriptionFiles: ['package.json'],  //  配置描述第三方模块的文件名称，也就是package.json 文件

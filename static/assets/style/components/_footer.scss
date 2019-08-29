@@ -41,7 +41,7 @@
             float: right;
             width: 240px;
             height: 306px;
-            background-image: url(../../img/footer_2weima.png);
+            background-image: url(~@img/footer_2weima.png);
             background-repeat: no-repeat;
             background-position: center center;
             background-color: #212936;
@@ -50,7 +50,7 @@
             float: right;
             width: 200px;
             height: 290px;
-            // background-image: url(../../img/footer_tell.png);
+            background-image: url(~@img/footer_tell.png);
             background-repeat: no-repeat;
             background-position: center 60px;
             text-align: center;
@@ -67,7 +67,7 @@
             .homeadd {
                 line-height: 16px;
                 color: #8f9091;
-                // background-image: url(../../img/home-add.png);
+                background-image: url(~@img/home-add.png);
                 background-repeat: no-repeat;
                 background-position: left 14px;
                 padding-left: 30px;
@@ -96,7 +96,7 @@
             float: right;
             width: 240px;
             background-color: #121821;
-            // background-image: url(../../img/footer_logo.png);
+            background-image: url(~@img/footer_logo.png);
             background-repeat: no-repeat;
             background-position: center center;
         }

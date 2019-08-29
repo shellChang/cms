@@ -73,15 +73,23 @@ $header-height: 64px;
                         top: -3px;
                         background-color: theme-color("danger");
                         width: 0px;
-                        transition: width .5s ease-out;
                 }
-                // border-bottom: 2px solid rgba(#000,0);
-                // transition: border-bottom 1s ease-in-out;
                 &:hover{
+                    >strong {
+                        color: theme-color("danger");
+                    }
+                    span {
+                        width: 100%;
+                        transition: width .3s ease-in;
+                     }
+                }
+                &.cur {
+                    >strong {
+                        color: theme-color("danger");
+                    }
                     span {
                         width: 100%;
                      }
-                    // border-bottom: 2px solid theme-color();
                 }
             }
         }
