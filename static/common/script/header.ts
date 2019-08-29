@@ -9,7 +9,7 @@ import { Component } from '@/common/interface/component'
     public bootstrap(): void {
         if (this._el !== null) {
             const lis = $(this._el).find("li");
-            let prevNode: HTMLLIElement = null;
+            let prevNode: HTMLLIElement = lis && lis[0];
             lis.each((index, node) => {
                 $(node).on('click', (e: Event) => {
                     if (prevNode !== null) {

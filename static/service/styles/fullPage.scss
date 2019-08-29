@@ -1,11 +1,58 @@
 #fullpage{
-    .section {
+    .section {        
         .bg{
             width: 100%;
             height: 100%;
             position: relative;
         }
         &:nth-child(1) {
+            .container {
+                .about_us {
+                    margin: 20px auto;
+                    width: 240px;
+                    .about_us h3 {
+                        font-size: 48px;
+                        line-height: 50px;
+                        font-weight: normal;
+                        color: #fff;
+                        text-align: center;
+                    }
+                    .about_title {
+                        margin: 0 auto 20px;
+                        width: 320px;
+                        border-bottom: 1px solid rgba(255,255,255,0.5);
+                        border-top: 1px solid rgba(255,255,255,0.5);
+                        p {
+                            height: 40px;
+                            font-size: 20px;
+                            line-height: 40px;
+                            font-family: "Microsoft YaHei UI Light";
+                            color: #fff;
+                            text-align: center;
+                        }
+                    }
+                    .about_desc {
+                        color: #fff;
+                        width: 80%;
+                        margin: auto 10%;
+                        font-size: 13px;
+                        line-height: 18px;
+                        text-align: left;
+                        p {
+                            text-indent: 2em;
+                        }
+                    }
+                    .about_tail {
+                        color: #f9d115;
+                        font-size: 16px;
+                        line-height: 25px;
+                        margin: 15px auto;
+                        width: 650px;
+                        text-align: center;
+                    }
+                }
+            }
+
             .bg {
                 background-image: url(~@img/bg2.jpg)
             }
