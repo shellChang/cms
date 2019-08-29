@@ -1,15 +1,14 @@
-// import { Component } from './../interface/component';
 import { Component } from '@/common/interface/component'
 
-export class Header implements Component {
-    private readonly el: HTMLElement;
+ class Header implements Component {
+    private readonly _el: HTMLHeadingElement;
     constructor() {
-        this.el = $('.ke-nuo-header') && $('.ke-nuo-header')[0]
+        this._el = $('.ke-nuo-header') && $('.ke-nuo-header')[0]
     }
 
     public bootstrap(): void {
-        if (this.el !== null) {
-            const lis = $(this.el).find("li");
+        if (this._el !== null) {
+            const lis = $(this._el).find("li");
             let prevNode: HTMLLIElement = null;
             lis.each((index, node) => {
                 $(node).on('click', (e: Event) => {
@@ -22,4 +21,12 @@ export class Header implements Component {
             })
         }
     }
+
+    get  el(): HTMLHeadingElement {
+        return this._el;
+    }
 }
+
+const headerInstance: Header =  new Header();
+
+export {Header, headerInstance}

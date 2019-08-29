@@ -14,6 +14,10 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "paths": {
+      "@": ["static"],
+      "@/*": ["static/*"],
+    },
     "lib": [
       "es2017",
       "dom"
