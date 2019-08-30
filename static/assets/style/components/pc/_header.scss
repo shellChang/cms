@@ -1,0 +1,96 @@
+
+$header-height: 80px;
+
+.#{$app_prefix}-header {
+    background-color: rgba(theme-color("dark"), 0);
+    box-sizing: border-box;
+    height: $header-height;
+    width: 100%;
+    vertical-align: middle;
+    line-height: $header-height;
+    position: absolute;
+    margin: auto auto;
+    transition: all .5s ease-in;
+    top: 0;
+    z-index: 1000;
+    &.hidden{
+        transition: all .5s ease-out;
+        transform: translateY(-100%);
+    }
+
+    >nav {
+        margin: 0 auto;
+        width: 960px;
+        position: relative;
+        height: 100%;
+        .#{$app_prefix}-logo{
+            height: 100%;
+            line-height: $header-height;
+            float: left;
+            cursor: pointer;
+            @include padding-right-md;
+            // margin-top: 8px;
+            >img{
+                position: relative;
+                height: 80%;
+                max-width: 200px;
+                border-radius: 100px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+        >ul {
+            margin-left: 320px;
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100%;
+            // float: right;
+
+            >li {
+                display: inline-block;
+                line-height: 80px;
+                height: 100%;
+                @include padding-horizonal-md;
+                text-align: center;
+                min-width: 110px;
+                cursor: pointer;
+                > strong {
+                    position: relative;
+                    font-weight: 400;
+                    display: block;
+                    width: 100%;
+                    font-size: 18px;
+                    text-align: center;
+                    height: 100%;
+                }
+                span {
+                    display: block;
+                        position: relative;
+                        height: 3px;
+                        top: -3px;
+                        background-color: theme-color("danger");
+                        width: 0px;
+                }
+                &:hover{
+                    >strong {
+                        color: theme-color("danger");
+                    }
+                    span {
+                        width: 100%;
+                        transition: width .3s ease-in;
+                     }
+                }
+                &.cur {
+                    >strong {
+                        color: theme-color("danger");
+                    }
+                    span {
+                        width: 100%;
+                     }
+                }
+            }
+        }
+    }
+};

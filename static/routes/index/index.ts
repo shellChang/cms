@@ -1,11 +1,16 @@
+
+import './index.scss'
 import { headerInstance } from '@/common/script/index';
 
+
 const myFullpage = new fullPage('#fullpage', {
-   navigation: true, //是否显示导航（小圆点）
-   navigationPosition: 'right', //设置小圆点位置 left right
+   // navigation: true, //是否显示导航（小圆点）
+   // navigationPosition: 'right', //设置小圆点位置 left right
    verticalCentered: true,     // 每一页的内容是否垂直居中
    lockAnchors: true,
-   // scrollOverflow: true,       // 超出是否显示滚动条
+   scrollOverflow: true,       // 超出是否显示滚动条
+   dragAndMove: true,
+   // controlArrows: false,
    //  sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'], //   定义背景颜色
    //  autoScrolling: true,
    // paddingTop: '120px',

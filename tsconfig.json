@@ -17,6 +17,8 @@
     "paths": {
       "@": ["static"],
       "@/*": ["static/*"],
+      "@assets": ["static/assets"],
+      "@assets/*": ["static/assets/*"]
     },
     "lib": [
       "es2017",

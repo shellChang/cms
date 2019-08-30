@@ -124,6 +124,8 @@ $gutters : map-merge(
   ),
   $gutters
 );
+// 初始化z-index
+$base-index: 1;
 
 // 屏幕尺寸大小
 $phone-screen: 768px;

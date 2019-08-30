@@ -16,17 +16,42 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 // const extractSCSS = new ExtractTextPlugin('stylesheets/[name]-two.css');
 
-const getScssPath = function()  {
-
+// 创建htmlWebpack插件
+const createHtmlWebpackPlugin = function (url, chunkName) {
+  return new htmlWebpackPlugin({
+    template: path.join(__dirname, url),
+    chunks: [
+      'runtime',
+      'vendors',
+      'main.js',
+      'main.css',
+      chunkName
+    ],
+    minify: {
+      minifyCSS: true,
+      minifyJS: true,
+      collapseWhitespace: true
+    }
+  })
 }
 
+// 要提取的模板
+const htmlWebpackPlugins = function () {
+  const htmls = [{ path: 'static/routes/index/index.html', chunkName: 'route.index' }]
+  let htmlWebpacks = []
+  htmls.forEach(htmlConfig => {
+    htmlWebpacks.push(
+      createHtmlWebpackPlugin(htmlConfig.path, htmlConfig.chunkName)
+    )
+  })
+  return htmlWebpacks
+}
 
 module.exports = {
   entry: {
     'main.js': ['./static/index.ts'],
     'main.css': ['./static/index.scss'],
-    'route.index':['./static/service/script/index.ts']
-    // 'index.style':'./static/service/styles/index.scss'
+    'route.index': ['./static/routes/index/index.ts']
   },
   watch: true,
   context: path.resolve(__dirname), // 处理项目文件的基目录
@@ -131,9 +156,9 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [ '.ts', 'scss','.js',  'css', 'jpg', 'html','.tsx'], // 导入语句没带文件后缀时， Webpack 会自动带上后缀后去尝试访问文件是否存在。
+    extensions: ['.ts', 'scss', '.js', 'css', 'jpg', 'html', '.tsx'], // 导入语句没带文件后缀时， Webpack 会自动带上后缀后去尝试访问文件是否存在。
     modules: [      //  配置Webpack 去哪些目录下寻找第三方模块, 默认只会去node_modules 目录下寻找
-      "node_modules",   
+      "node_modules",
 
     ],
     symlinks: true,
@@ -144,6 +169,7 @@ module.exports = {
     ],
     alias: {
       '@': path.resolve(__dirname, "static/"),
+      '@assets': path.resolve(__dirname, "static/assets"),
       '@img': path.resolve(__dirname, "static/assets/img")
     },
     descriptionFiles: ['package.json'],  //  配置描述第三方模块的文件名称，也就是package.json 文件
@@ -164,24 +190,9 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
-      fullPage:'fullpage.js/dist/fullpage.extensions.min.js'
+      fullPage: 'fullpage.js/dist/fullpage.extensions.min.js'
     }),
-    new htmlWebpackPlugin({
-      template: path.join(__dirname, 'static/service/views/index.html'),
-      chunks: [
-        'runtime',
-        'vendors',
-        'main.js',
-        'main.css',
-        'route.index'
-
-      ],
-      minify: {
-        minifyCSS: false,
-        minifyJS: false,
-        collapseWhitespace: false
-      }
-    }),
+    ...htmlWebpackPlugins(),
     new copyWebpackPlugin()
   ],
   output: {

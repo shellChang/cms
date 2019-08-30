@@ -1,0 +1,1 @@
+export {Header, headerInstance} from './script'

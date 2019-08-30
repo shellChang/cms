@@ -1,8 +1,11 @@
+// 通用样式
 @import './variables';
 @import './base//index';
 @import './mixins';
 
-
-
+// 在任何平台下的组件样式
 @import './components/index';
+@import './components/ipad/index';
+@import './components/phone/index';
+@import './components/pc/header';
 

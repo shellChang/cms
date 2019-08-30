@@ -1,6 +1,5 @@
-@import './header';
-@import './body';
-@import './footer';
+// 组件的样式
+@import '~@/assets/style/components/index/index';
 
 .#{$app_prefix}-app {
     height: 100%;
