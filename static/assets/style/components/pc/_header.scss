@@ -1,4 +1,3 @@
-
 $header-height: 80px;
 
 .#{$app_prefix}-header {
@@ -13,7 +12,8 @@ $header-height: 80px;
     transition: all .5s ease-in;
     top: 0;
     z-index: 1000;
-    &.hidden{
+
+    &.hidden {
         transition: all .5s ease-out;
         transform: translateY(-100%);
     }
@@ -23,14 +23,18 @@ $header-height: 80px;
         width: 960px;
         position: relative;
         height: 100%;
-        .#{$app_prefix}-logo{
+        box-sizing: border-box;
+        zoom: 1;
+
+        .#{$app_prefix}-logo {
             height: 100%;
             line-height: $header-height;
             float: left;
             cursor: pointer;
             @include padding-right-md;
+
             // margin-top: 8px;
-            >img{
+            >img {
                 position: relative;
                 height: 80%;
                 max-width: 200px;
@@ -39,6 +43,7 @@ $header-height: 80px;
                 vertical-align: middle;
             }
         }
+
         >ul {
             margin-left: 320px;
             position: relative;
@@ -56,7 +61,8 @@ $header-height: 80px;
                 text-align: center;
                 min-width: 110px;
                 cursor: pointer;
-                > strong {
+
+                >strong {
                     position: relative;
                     font-weight: 400;
                     display: block;
@@ -65,32 +71,89 @@ $header-height: 80px;
                     text-align: center;
                     height: 100%;
                 }
+
                 span {
                     display: block;
-                        position: relative;
-                        height: 3px;
-                        top: -3px;
-                        background-color: theme-color("danger");
-                        width: 0px;
+                    position: relative;
+                    height: 3px;
+                    top: -3px;
+                    background-color: theme-color("danger");
+                    width: 0px;
                 }
-                &:hover{
+
+                &:hover {
                     >strong {
                         color: theme-color("danger");
                     }
+
                     span {
                         width: 100%;
                         transition: width .3s ease-in;
-                     }
+                    }
                 }
+
                 &.cur {
                     >strong {
                         color: theme-color("danger");
                     }
+
                     span {
                         width: 100%;
-                     }
+                    }
+                }
+            }
+        }
+
+        /*  语言选择组件样式 */
+        .nav-right {
+            position: absolute;
+            height: 24px;
+            top: 50%;
+            right: 0;
+
+            .nav-lang {
+                position: relative;
+                background-color: #000;
+
+                .lang-downlist {
+                    position: absolute;
+                    left: 0;
+                    top: -12px;
+                    border-radius: 13px;
+                    &:hover {
+                        >.downlist-item {
+                            display: block !important;
+                            padding-bottom: 10px !important;
+                        }
+                    }
+
+                    .downlist-item {
+                        display: none;
+                        padding-bottom: 10px;
+
+                        &.cur {
+                            display: block !important;
+                            padding-bottom: 0;
+                        }
+
+                        .item-link {
+                            text-decoration: none;
+                            color: #fff;
+                            display: block;
+                            width: 22px;
+                            height: 22px;
+                            border: 1px solid #fff;
+                            border-radius: 100%;
+                            line-height: 20px;
+                            text-align: center;
+                            font-size: 8px;
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
         }
     }
-};
+}
+
+;

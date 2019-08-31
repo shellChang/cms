@@ -1,6 +1,11 @@
-
 import './index.scss'
 import { headerInstance } from '@/common/script/index';
+import { platformInstance, Language, getTranslateData } from '@/common'
+import { Body } from "@/common/script/body";
+const body = new Body();
+const data = getTranslateData(platformInstance.lang)
+body.translate(data);
+
 
 
 const myFullpage = new fullPage('#fullpage', {

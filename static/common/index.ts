@@ -1,1 +1,1 @@
-export {Header, headerInstance} from './script'
+export {Header, headerInstance, platformInstance, Language, getTranslateData} from './script'

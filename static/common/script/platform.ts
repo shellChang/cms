@@ -27,14 +27,16 @@ export class PlatformError extends Error {
 }
 
 
-export class Platform {
+export class Platform implements EventTarget {
+
+    private listeners: { type?: string, eventListeners?: EventListenerOrEventListenerObject[] } = {}
 
     // constructor(lang?: Language, device?: Device) {
     //         this._lang = lang;
     //         this._device = device;       
     // }
 
-    constructor() {
+    public constructor() {
         if (navigator && navigator.userAgent) {
             const userAgent: string = navigator.userAgent.toLowerCase();
             userAgent.search(/ipad/i) !== -1 ? this._device = Device.IPAD :
@@ -52,16 +54,23 @@ export class Platform {
 
     }
 
-    private _lang: Language = Language.CHINESE;  // 语言
+    private _lang: Language = Language.ENGLISH;  // 语言
 
     private _device: Device; // 设备
 
     public get lang(): Language {
         return this._lang;
     }
-    public set lang(value: Language) {
-        this._lang = value;
+
+    
+    public changeLang(value: Language): void {
+        this._lang = value
+        this.dispatchEvent(new CustomEvent('langChange', { detail: { lang: this._lang } }))
     }
+
+    // public set lang(value: Language) {
+    //     this._lang = value;
+    // }
 
     public get device(): Device {
         return this._device;
@@ -69,6 +78,45 @@ export class Platform {
     public set device(value: Device) {
         this._device = value;
     }
+
+    public langName(): string {
+        return this._lang === Language.CHINESE ? '中文' : this._lang === Language.ENGLISH ? '英文' : 'unknow language';
+    }
+
+    public deviceName(): string {
+        return this._device === Device.PC ? 'pc' : this._device === Device.IPAD ? 'ipad' : this._device === Device.PHONE ? '手机' : 'unknow device';
+    }
+
+    public addEventListener(type: string, listener: EventListenerOrEventListenerObject | null, options?: boolean | AddEventListenerOptions): void {
+        if (!this.listeners.hasOwnProperty(type)) {
+            this.listeners[type] = [];
+        }
+        this.listeners[type].push(listener);
+    }
+
+    dispatchEvent(event: Event): boolean {
+        if (this.listeners.hasOwnProperty(event.type)) {
+            const stack: EventListenerOrEventListenerObject[] = this.listeners[event.type];
+            stack.forEach((listener: EventListenerOrEventListenerObject | any) => {
+                listener.call(this, event);
+            });
+            return true;
+        } else {
+            return false;
+        }
+    }
+    removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void {
+        if (this.listeners.hasOwnProperty(type)) {
+            const stack: EventListenerOrEventListenerObject[] = this.listeners[type];
+            let index = stack.indexOf(callback);
+            while (index !== -1) {
+                stack.splice(index, 1);
+                index = stack.indexOf(callback);
+            }
+        }
+    }
+
+
 };
 
 // Platform 单例

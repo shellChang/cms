@@ -6,4 +6,6 @@
  * @LastEditTime: 2019-08-30 20:14:09
  */
 export { Header, headerInstance } from './header';
-export { Platform, platformInstance } from './platform';
+export { Platform, platformInstance, Device, Language } from './platform';
+export { App, appInstance } from './app'
+export { getTranslateData } from './translateData'

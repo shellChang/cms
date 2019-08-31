@@ -7,27 +7,41 @@
  */
 const getVariable: RegExp = /(\{\{)\s*(\S+\.?)+\s*(\}\})/g
 
-export const compile = function (html: string | Element, data?: object): string {
-    if (typeof html === 'string') {
-        return html && html.replace(getVariable, replace(data))
-    } else {
-        const nodes: Node[] = [];
-        nodes.push(html)
-        let index = 0;
-        while (index < nodes.length) {
-            if (nodes[index].hasChildNodes()) {
-                nodes[index].childNodes.forEach(node => {
-                    if (node.nodeType === 3) {
-                        node.textContent = node.textContent && node.textContent.replace(getVariable, replace(data))
-                    } else if (node.nodeType === 1) {
-                        nodes.push(node);
-                    }
-                })
+const compile = function (): Function {
+    let isInit = true;
+    const keys: string[] = [];
+    return function(html: string | Element, data?: object): string {
+        if (typeof html === 'string') {
+            return html && html.replace(getVariable, replace(data))
+        } else {
+            const nodes: Node[] = [];
+            nodes.push(html)
+            let textNodeIndex = 0
+            let index = 0;
+            while (index < nodes.length) {
+                if (nodes[index].hasChildNodes()) {
+                    nodes[index].childNodes.forEach(node => {
+                        if (node.nodeType === 3) {
+                            if(isInit) {
+                                keys.push(node.textContent)
+                                node.textContent = node.textContent && node.textContent.replace(getVariable, replace(data))
+                            } else {
+                                node.textContent = keys[textNodeIndex] && keys[textNodeIndex].replace(getVariable, replace(data))
+                                textNodeIndex++
+                            }
+                        } else if (node.nodeType === 1) {
+                            nodes.push(node);
+                        }
+                    })
+                }
+                index++;
             }
-            index++;
+            isInit = false
         }
     }
 }
+
+export const compileHtml: Function = compile()
 
 /**
  * @description: 替换正则表达式匹配的的数据
