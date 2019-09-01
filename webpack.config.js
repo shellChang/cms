@@ -1,3 +1,10 @@
+/*
+ * @Description: TODO 
+ * @Author: zb
+ * @Date: 2019-08-31 18:57:40
+ * @LastEditors: zb
+ * @LastEditTime: 2019-09-01 22:36:10
+ */
 /** 静态资源的打包配置 */
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
@@ -17,8 +24,9 @@ const webpack = require('webpack');
 // const extractSCSS = new ExtractTextPlugin('stylesheets/[name]-two.css');
 
 // 创建htmlWebpack插件
-const createHtmlWebpackPlugin = function (url, chunkName) {
+const createHtmlWebpackPlugin = function (url, chunkName, filename) {
   return new htmlWebpackPlugin({
+    filename: `${filename}`,      // 如果加路径的话就在文件名前面写上你想加的路径， E.g `m/${filename}`
     template: path.join(__dirname, url),
     chunks: [
       'runtime',
@@ -37,11 +45,12 @@ const createHtmlWebpackPlugin = function (url, chunkName) {
 
 // 要提取的模板
 const htmlWebpackPlugins = function () {
-  const htmls = [{ path: 'static/routes/index/index.html', chunkName: 'route.index' }]
+  const htmls = [{ path: 'static/routes/pc/index/index.html', chunkName: 'route.index', filename: 'index.html' },
+  { path: 'static/routes/pc/contact/index.html', chunkName: 'route.contact', filename: 'contact.html' }]
   let htmlWebpacks = []
   htmls.forEach(htmlConfig => {
     htmlWebpacks.push(
-      createHtmlWebpackPlugin(htmlConfig.path, htmlConfig.chunkName)
+      createHtmlWebpackPlugin(htmlConfig.path, htmlConfig.chunkName, htmlConfig.filename)
     )
   })
   return htmlWebpacks
@@ -51,7 +60,8 @@ module.exports = {
   entry: {
     'main.js': ['./static/index.ts'],
     'main.css': ['./static/index.scss'],
-    'route.index': ['./static/routes/index/index.ts']
+    'route.index': ['./static/routes/pc/index/index.ts'],
+    'route.contact': ['./static/routes/pc/contact/index.ts']
   },
   watch: true,
   context: path.resolve(__dirname), // 处理项目文件的基目录

@@ -1,33 +1,29 @@
+
 /*
  * @Description: TODO 编译模板的函数
  * @Author: zb
  * @Date: 2019-08-30 23:14:05
  * @LastEditors: zb
- * @LastEditTime: 2019-08-31 03:03:35
+ * @LastEditTime: 2019-08-31 21:31:56
  */
 const getVariable: RegExp = /(\{\{)\s*(\S+\.?)+\s*(\}\})/g
 
 const compile = function (): Function {
-    let isInit = true;
-    const keys: string[] = [];
-    return function(html: string | Element, data?: object): string {
-        if (typeof html === 'string') {
-            return html && html.replace(getVariable, replace(data))
-        } else {
+    //  是否首次解析
+    let isInit = true; 
+    const textNodes: Map<string, Node> = new Map<string, Node>()
+    return function (html: Node, data?: object): any {
+        if (isInit) {
             const nodes: Node[] = [];
             nodes.push(html)
-            let textNodeIndex = 0
             let index = 0;
             while (index < nodes.length) {
                 if (nodes[index].hasChildNodes()) {
                     nodes[index].childNodes.forEach(node => {
                         if (node.nodeType === 3) {
-                            if(isInit) {
-                                keys.push(node.textContent)
+                            if (getVariable.test(node.textContent)) {
+                                textNodes.set(node.textContent, node)
                                 node.textContent = node.textContent && node.textContent.replace(getVariable, replace(data))
-                            } else {
-                                node.textContent = keys[textNodeIndex] && keys[textNodeIndex].replace(getVariable, replace(data))
-                                textNodeIndex++
                             }
                         } else if (node.nodeType === 1) {
                             nodes.push(node);
@@ -37,10 +33,19 @@ const compile = function (): Function {
                 index++;
             }
             isInit = false
+        } else {
+            textNodes.forEach((n, key) => {
+                n.textContent = key.replace(getVariable, replace(data))
+            })
         }
     }
 }
 
+/**
+ * @description: 获取编译节点的函数
+ * @param {type} 
+ * @return: 
+ */
 export const compileHtml: Function = compile()
 
 /**

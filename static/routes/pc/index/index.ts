@@ -1,9 +1,7 @@
 import './index.scss'
-import { headerInstance } from '@/common/script/index';
-import { platformInstance, Language, getTranslateData } from '@/common'
-import { Body } from "@/common/script/body";
+import { platformInstance, Language, getLangData, headerInstance, Body} from '@/common'
 const body = new Body();
-const data = getTranslateData(platformInstance.lang)
+const data = getLangData(platformInstance.lang)
 body.translate(data);
 
 

@@ -29,6 +29,7 @@
     "bootstrap": "^4.3.1",
     "fullpage.js": "^3.0.7",
     "jquery": "^3.4.1",
+    "mui": "^0.0.1",
     "mustache": "^3.0.1",
     "mustache-express": "^1.2.8",
     "reflect-metadata": "^0.1.12",

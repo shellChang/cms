@@ -45,7 +45,7 @@ $header-height: 80px;
         }
 
         >ul {
-            margin-left: 320px;
+            margin-left: 240px;
             position: relative;
             display: flex;
             justify-content: flex-start;
@@ -70,6 +70,9 @@ $header-height: 80px;
                     font-size: 18px;
                     text-align: center;
                     height: 100%;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
                 }
 
                 span {
@@ -124,12 +127,14 @@ $header-height: 80px;
                         >.downlist-item {
                             display: block !important;
                             padding-bottom: 10px !important;
+                            transition: display .5s ease-in;
                         }
                     }
 
                     .downlist-item {
                         display: none;
                         padding-bottom: 10px;
+                        transition: all .5s ease-out;
 
                         &.cur {
                             display: block !important;
@@ -146,7 +151,7 @@ $header-height: 80px;
                             border-radius: 100%;
                             line-height: 20px;
                             text-align: center;
-                            font-size: 8px;
+                            font-size: 12px;
                             cursor: pointer;
                         }
                     }
