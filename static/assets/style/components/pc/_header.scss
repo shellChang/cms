@@ -25,6 +25,7 @@ $header-height: 80px;
         height: 100%;
         box-sizing: border-box;
         zoom: 1;
+        color: theme-color("light");;
 
         .#{$app_prefix}-logo {
             height: 100%;
@@ -73,6 +74,13 @@ $header-height: 80px;
                     white-space: nowrap;
                     text-overflow: ellipsis;
                     overflow: hidden;
+                    a{
+                        text-decoration: none;
+                        color: theme-color("light");
+                        &:active{
+                            color: theme-color("danger") !important;
+                        }
+                    }
                 }
 
                 span {

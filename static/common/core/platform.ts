@@ -3,7 +3,7 @@
  * @Author: zb
  * @Date: 2019-08-30 19:23:04
  * @LastEditors: zb
- * @LastEditTime: 2019-09-01 20:30:04
+ * @LastEditTime: 2019-09-01 23:18:50
  */
 
 const config = require('../../../app.config')
@@ -62,18 +62,19 @@ export class Platform implements EventTarget {
         // 根据页面大小来设定运行环境
         if (config['envirenment'] === 'dev') {
             this.changeDeviceBySrcollWeight()
+        } else {
+            $(window).resize(e => {
+                this.changeDeviceBySrcollWeight()
+                this.swithEnvironment()
+            })
         }
         $(document).on('DOMContentLoaded',  (e) => {
-            this.swithEnvironment()
-        })
-        $(window).resize(e => {
-            this.changeDeviceBySrcollWeight()
             this.swithEnvironment()
         })
 
     }
 
-    private _lang: Language = Language.ENGLISH;  // 语言
+    private _lang: Language = Language.CHINESE;  // 语言
 
     private _device: Device; // 设备
 
@@ -133,16 +134,11 @@ export class Platform implements EventTarget {
     }
 
     private swithEnvironment(): void {
-        console.log(this._device)
         if(this._device === Device.PC && location.href.startsWith(`${this._origin}/m`)) {
             const url = location.href.substring(this._origin.length + 2, location.href.length)
             location.replace(`${this._origin}${url}`)
-            // console.log(this.langName())
-            // console.log(this._origin)
-            // console.log(location.href)
             
         } else if ( (this._device === Device.IPAD || this._device === Device.PHONE) && !location.href.startsWith(`${this._origin}/m`) ) {
-            debugger
             const url = location.href.substring(this._origin.length, location.href.length)
             location.replace(`${this._origin}/m${url}`)
         }

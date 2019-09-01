@@ -3,7 +3,7 @@
  * @Author: zb
  * @Date: 2019-08-31 18:57:40
  * @LastEditors: zb
- * @LastEditTime: 2019-09-01 22:36:10
+ * @LastEditTime: 2019-09-02 02:01:02
  */
 /** 静态资源的打包配置 */
 const path = require('path');
@@ -46,7 +46,8 @@ const createHtmlWebpackPlugin = function (url, chunkName, filename) {
 // 要提取的模板
 const htmlWebpackPlugins = function () {
   const htmls = [{ path: 'static/routes/pc/index/index.html', chunkName: 'route.index', filename: 'index.html' },
-  { path: 'static/routes/pc/contact/index.html', chunkName: 'route.contact', filename: 'contact.html' }]
+  { path: 'static/routes/pc/contact/index.html', chunkName: 'route.contact', filename: 'contact.html' },
+  { path: 'static/routes/pc/case/index.html', chunkName: 'route.case', filename: 'case.html' }]
   let htmlWebpacks = []
   htmls.forEach(htmlConfig => {
     htmlWebpacks.push(
@@ -61,7 +62,8 @@ module.exports = {
     'main.js': ['./static/index.ts'],
     'main.css': ['./static/index.scss'],
     'route.index': ['./static/routes/pc/index/index.ts'],
-    'route.contact': ['./static/routes/pc/contact/index.ts']
+    'route.contact': ['./static/routes/pc/contact/index.ts'],
+    'route.case': ['./static/routes/pc/case/index.ts']
   },
   watch: true,
   context: path.resolve(__dirname), // 处理项目文件的基目录
