@@ -103,7 +103,7 @@ module.exports = {
   },
   module: {
     noParse: (content) => {            //  让Webpack 忽略对部分没采用模块化的文件的递归解析和处理
-      return /(jquery|fullPage)\S*.js$/.test(content)
+      return /(jquery|fullPage|ScrollReveal)\S*.js$/.test(content)
     },
     rules: [
       {
@@ -171,7 +171,6 @@ module.exports = {
     extensions: ['.ts', 'scss', '.js', 'css', 'jpg', 'html', '.tsx'], // 导入语句没带文件后缀时， Webpack 会自动带上后缀后去尝试访问文件是否存在。
     modules: [      //  配置Webpack 去哪些目录下寻找第三方模块, 默认只会去node_modules 目录下寻找
       "node_modules",
-
     ],
     symlinks: true,
     mainFields: [   // 配置在package.json文件读取的key值，从而引入相关配置文件

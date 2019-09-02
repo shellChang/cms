@@ -34,7 +34,8 @@
     "mustache-express": "^1.2.8",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
-    "rxjs": "^6.3.3"
+    "rxjs": "^6.3.3",
+    "scrollreveal": "^4.0.5"
   },
   "devDependencies": {
     "@nestjs/testing": "^6.0.0",

@@ -11,7 +11,8 @@ const getVariable: RegExp = /(\{\{)\s*(\S+\.?)+\s*(\}\})/g
 const compile = function (): Function {
     //  是否首次解析
     let isInit = true; 
-    const textNodes: Map<string, Node> = new Map<string, Node>()
+    // 存储页面的TextNode
+    const textNodes: Map<string, Node[]> = new Map<string, Node[]>()
     return function (html: Node, data?: object): any {
         if (isInit) {
             const nodes: Node[] = [];
@@ -22,7 +23,13 @@ const compile = function (): Function {
                     nodes[index].childNodes.forEach(node => {
                         if (node.nodeType === 3) {
                             if (getVariable.test(node.textContent)) {
-                                textNodes.set(node.textContent, node)
+                                if(!textNodes.get(node.textContent)) {
+                                    textNodes.set(node.textContent, [node])
+                                } else {
+                                    const ns = textNodes.get(node.textContent)
+                                    ns.push(node)
+                                }
+
                                 node.textContent = node.textContent && node.textContent.replace(getVariable, replace(data))
                             }
                         } else if (node.nodeType === 1) {
@@ -33,9 +40,11 @@ const compile = function (): Function {
                 index++;
             }
             isInit = false
-        } else {
-            textNodes.forEach((n, key) => {
-                n.textContent = key.replace(getVariable, replace(data))
+        } else {            
+            textNodes.forEach(function(ns, key) {
+                ns.forEach(function(n) {
+                    n.textContent = key.replace(getVariable, replace(data))
+                })
             })
         }
     }

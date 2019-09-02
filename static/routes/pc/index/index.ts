@@ -1,3 +1,4 @@
+import ScrollReveal from 'scrollreveal';
 import './index.scss'
 import { platformInstance, Language, getLangData, headerInstance, Body} from '@/common'
 const body = new Body();
@@ -6,23 +7,12 @@ body.translate(data);
 
 
 
-const myFullpage = new fullPage('#fullpage', {
-   // navigation: true, //是否显示导航（小圆点）
-   // navigationPosition: 'right', //设置小圆点位置 left right
+ new fullPage('#fullpage', {
    verticalCentered: true,     // 每一页的内容是否垂直居中
    lockAnchors: true,
-   scrollOverflow: true,       // 超出是否显示滚动条
    dragAndMove: true,
-   // controlArrows: false,
-   //  sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'], //   定义背景颜色
-   //  autoScrolling: true,
-   // paddingTop: '120px',
-   // continuousVertical: false,
    css3: true,
-   //  parallax: true,
-   //  fixedElements: ".ke-nuo-header",
-   //是否包含滚动条，设为true，则浏览器自带的滚动条会出现，页面还是按页滚动，但是浏览器滚动条默认行为也有效
-   // scrollBar: false,
+   scrollBar: true,
    onLeave: function (from, to) {
       const headers = $(headerInstance.el);
       if (from.index === 1 && to.index === 0) {
@@ -36,3 +26,58 @@ const myFullpage = new fullPage('#fullpage', {
       }
    }
 });
+
+
+// 滚动动画
+
+const titleAnimate = new ScrollReveal({
+   duration: 1500,
+   // // 延迟时间
+   delay: 500,
+   // // 动画开始的位置，'bottom', 'left', 'top', 'right'
+   origin: 'left',
+   // 回滚的时候是否再次触发动画
+   reset: false,
+   // // 在移动端是否使用动画
+   mobile: true,
+   // 滚动的距离，单位可以用%，rem等
+   distance: '200px',
+   // 其他可用的动画效果
+   opacity: 0,
+   // 开始角度
+   totate: {x: 45, y: 45, z: 45},
+
+   easing: 'ease-out',
+   // 缩放值
+   scale: 0.2,
+
+   container: document.getElementById('section1')
+});
+titleAnimate.reveal('.title')
+
+// console.log(sr)
+// sr.reveal('#section1 .title')
+
+// new ScrollReveal().reveal('#section2 .about_desc figure',{
+//    duration: 1500,
+//    // // 延迟时间
+//    delay: 200,
+//    // // 动画开始的位置，'bottom', 'left', 'top', 'right'
+//    origin: 'left',
+//    // 回滚的时候是否再次触发动画
+//    reset: true,
+//    // // 在移动端是否使用动画
+//    mobile: true,
+//    // 滚动的距离，单位可以用%，rem等
+//    distance: '2000px',
+//    // 其他可用的动画效果
+//    opacity: 0,
+//    // 开始角度
+//    totate: {x: 45, y: 45, z: 45},
+   
+//    easing: 'ease-out',
+//    // 缩放值
+//    scale: 0.2,
+
+//    container: document.getElementById('section2')
+// })

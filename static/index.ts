@@ -10,7 +10,7 @@
 //  import Third lib
 import 'fullpage.js/vendors/scrolloverflow'
 import 'fullpage.js/dist/fullpage.extensions.min'
-
+import ScrollReveal from 'scrollreveal'
 // Common Script
 import {headerInstance, platformInstance} from '@/common';
 
