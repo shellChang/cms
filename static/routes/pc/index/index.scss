@@ -173,12 +173,12 @@
                     perspective: 1000;
                     .card {
                         width: calc(50% - 18px);
-                        height: 350px;
+                        height: auto;
+                        min-height: 360px;
                         border-radius: 8px;
                         box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
                         display: inline-block;
                         background: rgba(0, 0, 0, 0.5);
-                        padding: 8px 8px;
                         cursor: pointer;
                         transition: 0.6s;
                         transform-style: preserve-3d;
@@ -187,12 +187,15 @@
                         }
                         .front, .back {
                             backface-visibility: hidden;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            bottom: 0;
+                            right: 0;
                         }
                         .front {
-                            width: 100%;
-                            position: relative;
-                            height: 100%;
                             z-index: 2;
+                            padding: 8px 8px;
                             h3{
                                 font-size: 24px;
                                 font-weight: 700;
@@ -204,7 +207,25 @@
                             }
                         }
                         .back {
-                            
+                            padding: 8px 16px;
+                            transform: rotateY(180deg);
+                            &::-webkit-scrollbar{
+                                width: 0px;
+                            }
+                            ul {
+                                li {
+                                    padding-top: 12px;
+                                    h2 {
+                                        height: 18px;
+                                        font-size: 16px;
+                                        line-height: 18px;
+                                        margin-bottom: 4px;
+                                    }
+                                    p {
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
                         }
                         // background: linear-gradient(135deg,rgba(94,136,255,.85),rgba(111,48,254,.85));
                     }
