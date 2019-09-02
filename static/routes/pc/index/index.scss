@@ -22,6 +22,7 @@
             .fp-bg {
                 background-image: url(~@img/bg6.jpg)
             }
+
             .title {
                 position: absolute;
                 top: 190px;
@@ -47,6 +48,7 @@
             .fp-bg {
                 background-image: url(~@img/bg7.png)
             }
+
             .content {
                 .about_us {
                     margin: 20px auto;
@@ -133,6 +135,7 @@
                 //     background: linear-gradient(135deg,rgba(94,136,255,.85),rgba(111,48,254,.85));
                 // }
             }
+
             .content {
                 .about_us {
                     margin: 20px auto;
@@ -171,21 +174,25 @@
                     align-items: center;
                     justify-content: space-between;
                     perspective: 1000;
+
                     .card {
                         width: calc(50% - 18px);
                         height: auto;
                         min-height: 360px;
                         border-radius: 8px;
-                        box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
+                        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
                         display: inline-block;
                         background: rgba(0, 0, 0, 0.5);
                         cursor: pointer;
                         transition: 0.6s;
                         transform-style: preserve-3d;
+
                         &:hover {
                             transform: rotateY(180deg);
                         }
-                        .front, .back {
+
+                        .front,
+                        .back {
                             backface-visibility: hidden;
                             position: absolute;
                             top: 0;
@@ -193,167 +200,74 @@
                             bottom: 0;
                             right: 0;
                         }
+
                         .front {
                             z-index: 2;
                             padding: 8px 8px;
-                            h3{
+
+                            h3 {
                                 font-size: 24px;
                                 font-weight: 700;
                                 margin: 24px 0px 48px;
                                 text-align: center;
                             }
-                            p{
+
+                            p {
                                 text-indent: 2rem;
                             }
                         }
+
                         .back {
                             padding: 8px 16px;
                             transform: rotateY(180deg);
-                            &::-webkit-scrollbar{
+
+                            &::-webkit-scrollbar {
                                 width: 0px;
                             }
+
                             ul {
                                 li {
                                     padding-top: 12px;
+
                                     h2 {
                                         height: 18px;
                                         font-size: 16px;
                                         line-height: 18px;
                                         margin-bottom: 4px;
                                     }
+
                                     p {
                                         font-size: 14px;
                                     }
                                 }
                             }
                         }
+
                         // background: linear-gradient(135deg,rgba(94,136,255,.85),rgba(111,48,254,.85));
                     }
-
-
-                    /* entire container, keeps perspective */
-// .flip-container {
-//     perspective: 1000;
-//     }
-//     /* flip the pane when hovered */
-//     .flip-container:hover .flipper, .flip-container.hover .flipper {
-//     transform: rotateY(180deg);
-//     }
-//     .flip-container, .front, .back {
-//     width: 320px;
-//     height: 480px;
-//     }
-//     /* flip speed goes here */
-//     .flipper {
-//     transition: 0.6s;
-//     transform-style: preserve-3d;
-//      position: relative;
-//     }
-//     /* hide back of pane during swap */
-//     .front, .back {
-//     backface-visibility: hidden;
-//      position: absolute;
-//     top: 0;
-//     left: 0;
-//     }
-//     /* front pane, placed above back */
-//     .front {
-//         z-index: 2;
-//         background-image: url(~@img/picture4.png)
-//     }
-//     /* back, initially hidden pane */
-//     .back {
-//     transform: rotateY(180deg);
-//     }
-                    // details {
-                    //     position: relative;
-                    //     width: 600px;
-                    //     margin: auto;
-                    //     padding-bottom: 12px;
-
-                    //     summary {
-                    //         font-size: 36px;
-                    //         color: #007bff;
-                    //         outline: none;
-                    //         border-bottom: 2px solid #007bff;
-                    //     }
-
-                    //     .details-info {
-                    //         position: relative;
-
-                    //         // background: linear-gradient(#4BBFC3,#7BAABE);
-                    //         .intr {
-                    //             position: relative;
-                    //             margin-bottom: 16px;
-                    //         }
-
-                    //         ul {
-                    //             position: relative;
-
-                    //             li {
-                    //                 position: relative;
-
-                    //                 div {
-                    //                     position: relative;
-                    //                     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-                    //                     vertical-align: middle;
-                    //                     min-height: 60px;
-                    //                     display: flex;
-                    //                     align-items: center;
-                    //                     justify-content: flex-start;
-
-                    //                     // line-height: 100px;
-                    //                     img {
-                    //                         width: 65px;
-                    //                         // float: left;
-                    //                         // margin: auto 0;
-                    //                         // top: 0;
-                    //                         // bottom: 0;
-                    //                         // transform: translateY(50%);
-                    //                     }
-
-                    //                     div {
-                    //                         margin-left: 12px;
-                    //                         display: block;
-
-                    //                         h2 {
-                    //                             font-size: 20px;
-                    //                             font-weight: bold;
-                    //                             color: #007bff;
-                    //                             margin-bottom: 8px;
-                    //                         }
-
-                    //                         p {
-                    //                             font-size: 14px;
-                    //                             color: #eee;
-                    //                             line-height: 24px;
-                    //                             vertical-align: middle;
-                    //                         }
-                    //                     }
-                    //                 }
-                    //             }
-                    //         }
-                    //     }
-                    // }
                 }
             }
         }
 
         &:nth-child(4) {
-            .content {
-                .about_us {
-                    margin: 20px auto;
-                    width: 240px;
-                    margin: 0 auto 98px;
+            .fp-bg {
+                background-image: url(~@img/bg8.png)
+            }
 
-                    h3 {
-                        font-size: 48px;
-                        line-height: 50px;
-                        font-weight: normal;
-                        color: #fff;
-                        text-align: center;
-                    }
-                }
+            .content {
+                // .about_us {
+                //     margin: 20px auto;
+                //     width: 240px;
+                //     margin: 0 auto 98px;
+
+                //     h3 {
+                //         font-size: 48px;
+                //         line-height: 50px;
+                //         font-weight: normal;
+                //         color: #333;
+                //         text-align: center;
+                //     }
+                // }
 
                 // .about_title {
                 //     margin: 0 auto 20px;
@@ -372,22 +286,28 @@
                 // }
 
                 .about_desc {
-                    color: #fff;
+                    color: #333;
                     padding: 0 100px;
                     overflow: auto;
 
                     figure {
                         position: relative;
                         width: 100%;
-                        column-span: 1;
-
-                        img {
-                            width: 40%;
+                        display: flex;
+                        align-items: center;
+                        >div:first-child{
+                            width: 543px;
                             margin-right: 24px;
+                            display: inline-block;
+                            background-image: url(~@img/picture6.jpg);
+                            height: 324px;
+                            >div{
+                                background: linear-gradient(135deg,rgba(94,136,255,.85),rgba(111,48,254,.85));
+                            }
                         }
 
-                        div {
-                            width: calc(60% - 24px);
+                        >div:last-child {
+                            width: calc(100% - 543px - 24px);
                             display: inline-block;
                             text-align: right;
                             color: #343a40;
@@ -407,22 +327,27 @@
                         margin-top: 24px;
 
                         li {
+                            position: relative;
+                            // padding-right: 12px;
                             >div {
-                                background-color: #fff;
+                                background-color: #333;
                                 height: 12px;
                                 width: 12px;
                                 border-radius: 6px;
                                 display: inline-block;
                                 margin: auto 12px auto;
+                                position: absolute;
+                                top:6px;
+                                left: 0px;
+                            }
+                            P {
+                                // text-indent: 24px;
+                                margin-left: 36px;
                             }
                         }
                     }
 
                 }
-            }
-
-            .fp-bg {
-                background-image: url(~@img/bg2.jpg)
             }
         }
     }
