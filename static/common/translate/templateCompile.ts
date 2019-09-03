@@ -42,8 +42,12 @@ const compile = function (): Function {
             isInit = false
         } else {            
             textNodes.forEach(function(ns, key) {
+                let currentLangText: string = '';
                 ns.forEach(function(n) {
-                    n.textContent = key.replace(getVariable, replace(data))
+                    if(currentLangText === '') {
+                        currentLangText = key.replace(getVariable, replace(data))
+                    }
+                    n.textContent = currentLangText
                 })
             })
         }
