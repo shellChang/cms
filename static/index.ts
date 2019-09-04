@@ -4,13 +4,14 @@
  * @update: zb
  * @Date: 2019-07-08 08:42:59
  * @LastEditors: zb
- * @LastEditTime: 2019-09-01 22:33:43
+ * @LastEditTime: 2019-09-04 21:38:41
  */
 
 //  import Third lib
 import 'fullpage.js/vendors/scrolloverflow'
 import 'fullpage.js/dist/fullpage.extensions.min'
 import ScrollReveal from 'scrollreveal'
+import 'normalize.css'
 // Common Script
 import {headerInstance, platformInstance} from '@/common';
 

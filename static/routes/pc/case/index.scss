@@ -25,4 +25,14 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+    &:nth-child(3) {
+      background-image: url(~@img/case12.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+  &:nth-child(1) {
+    background-image: url(~@img/case13.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
   }

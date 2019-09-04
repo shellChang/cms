@@ -3,7 +3,7 @@
  * @Author: zb
  * @Date: 2019-08-31 18:57:40
  * @LastEditors: zb
- * @LastEditTime: 2019-09-02 02:01:02
+ * @LastEditTime: 2019-09-04 22:57:48
  */
 /** 静态资源的打包配置 */
 const path = require('path');
@@ -19,6 +19,7 @@ const sassLoader = require('sass-loader');
 const htmlLoader = require('html-withimg-loader');
 const copyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin')
 
 const webpack = require('webpack');
 // const extractSCSS = new ExtractTextPlugin('stylesheets/[name]-two.css');
@@ -34,12 +35,7 @@ const createHtmlWebpackPlugin = function (url, chunkName, filename) {
       'main.js',
       'main.css',
       chunkName
-    ],
-    minify: {
-      minifyCSS: true,
-      minifyJS: true,
-      collapseWhitespace: true
-    }
+    ]
   })
 }
 
@@ -78,7 +74,6 @@ module.exports = {
       maxInitialRequests: 3,
       automaticNameDelimiter: '-',
       name: true,
-
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
@@ -164,6 +159,13 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'image-webpack-loader',
+        options: {
+          bypassOnDebug: true,
+        }
       }
     ],
   },
@@ -204,6 +206,9 @@ module.exports = {
       fullPage: 'fullpage.js/dist/fullpage.extensions.min.js'
     }),
     ...htmlWebpackPlugins(),
+    new StyleExtHtmlWebpackPlugin({
+      position: 'head-bottom'
+    }),
     new copyWebpackPlugin()
   ],
   output: {

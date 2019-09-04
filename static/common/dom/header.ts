@@ -3,13 +3,13 @@
  * @Author: zb
  * @Date: 2019-08-31 18:57:40
  * @LastEditors: zb
- * @LastEditTime: 2019-09-01 16:48:42
+ * @LastEditTime: 2019-09-05 00:54:22
  */
 import { Component } from '@/common/interface/component'
 import { appInstance, platformInstance, Language } from "@/common/core";
 
 class Header implements Component {
-    private readonly _el: HTMLHeadingElement;
+    private readonly _el: HTMLElement;
     constructor() {
         this._el = $(`.${appInstance.cssPrefix}-header`) && $(`.${appInstance.cssPrefix}-header`)[0]
     }
@@ -82,7 +82,7 @@ class Header implements Component {
         }
     }
 
-    get el(): HTMLHeadingElement {
+    get el(): HTMLElement {
         return this._el;
     }
 }

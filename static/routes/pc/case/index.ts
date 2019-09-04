@@ -1,3 +1,10 @@
+/*
+ * @Description: TODO 
+ * @Author: zb
+ * @Date: 2019-09-04 19:09:17
+ * @LastEditors: zb
+ * @LastEditTime: 2019-09-05 01:05:10
+ */
 // Third Lib CSS
 import 'swiper/dist/css/swiper.min.css';
 
@@ -9,20 +16,23 @@ const body = new Body();
 const data = getLangData(platformInstance.lang)
 body.translate(data);
 
-$('.swiper-container').height($(document).height());
+$(headerInstance.el).addClass('static');
+
+$('.swiper-container').height($(document).height() - 160);
 
 
 new Swiper('.swiper-container', {
    slidesPerView: 1,
    spaceBetween: 30,
    loop: true,
-   effect: 'fade',
+   // effect: 'fade',
+   autoplay: true,
    pagination: {
       el: '.swiper-pagination',
       dynamicBullets: true,
    },
-   navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    }
+   // navigation: {
+   //    nextEl: '.swiper-button-next',
+   //    prevEl: '.swiper-button-prev',
+   //  }
 });

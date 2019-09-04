@@ -1,3 +1,5 @@
+@import '~@assets/style/variables';
+
 #fullpage {
     .section {
         // .fp-scroller {
@@ -31,11 +33,11 @@
                 max-height: 260px;
                 margin-left: -300px;
                 overflow: hidden;
-                color: #fff;
+                color: $gray-100;
                 text-align: center;
 
                 h2 {
-                    color: #333;
+                    color: $gray-900;
                     font-size: 32px;
                     line-height: 48px;
                     letter-spacing: 2px;
@@ -58,7 +60,7 @@
                         font-size: 48px;
                         line-height: 50px;
                         font-weight: normal;
-                        color: #000;
+                        color: $gray-900;
                         text-align: center;
                     }
                 }
@@ -74,7 +76,7 @@
                         font-size: 20px;
                         line-height: 40px;
                         font-family: "Microsoft YaHei UI Light";
-                        color: #000;
+                        color: $gray-900;
                         text-align: center;
                     }
                 }
@@ -116,7 +118,7 @@
                         }
 
                         p {
-                            color: #000;
+                            color: $gray-900;
                             text-indent: 2em;
                         }
 
@@ -145,7 +147,7 @@
                         font-size: 48px;
                         line-height: 50px;
                         font-weight: normal;
-                        color: #fff;
+                        color: $gray-100;
                         text-align: center;
                     }
                 }
@@ -161,13 +163,13 @@
                         font-size: 20px;
                         line-height: 40px;
                         font-family: "Microsoft YaHei UI Light";
-                        color: #fff;
+                        color:$gray-100;
                         text-align: center;
                     }
                 }
 
                 .about_desc {
-                    color: #fff;
+                    color: $gray-100;
                     padding: 0 100px;
                     overflow: hidden;
                     display: flex;
@@ -214,7 +216,7 @@
                                 font-weight: 700;
                                 margin: 24px 0px 48px;
                                 text-align: center;
-                                color: #007bff;
+                                color: $red;
                             }
 
                             p {
@@ -223,8 +225,9 @@
                         }
 
                         .back {
-                            padding: 8px 16px;
+                            // padding: 8px 16px;
                             transform: rotateY(180deg);
+                            // text-align: center;
 
                             &::-webkit-scrollbar {
                                 width: 0px;
@@ -232,13 +235,13 @@
 
                             ul {
                                 li {
-                                    &:nth-child(1) , &:nth-child(2) {
+                                    // &:nth-child(1) , &:nth-child(2) {
                                         h2{
-                                            color: #dc3545;
+                                            color: $red;
                                             font-weight: 700;
                                         }
-                                    }
-                                    padding-top: 12px;
+                                    // }
+                                    padding-top: 1rem;
 
                                     h2 {
                                         height: 18px;
@@ -248,7 +251,8 @@
                                     }
 
                                     p {
-                                        padding-left: 2rem;
+                                        text-indent: 2rem;
+                                        // padding-left: 2rem;
                                         font-size: 14px;
                                     }
                                 }
@@ -268,7 +272,7 @@
 
             .content {
                 .about_desc {
-                    color: #333;
+                    color: $gray-900;
                     padding: 0 100px;
                     overflow: auto;
 
@@ -292,7 +296,7 @@
                             width: calc(100% - 543px - 24px);
                             display: inline-block;
                             text-align: right;
-                            color: #343a40;
+                            color: $gray-800;
 
                             h3 {
                                 font-size: 28px;
@@ -312,7 +316,7 @@
                             position: relative;
                             // padding-right: 12px;
                             >div {
-                                background-color: #333;
+                                background-color: $gray-900;
                                 height: 12px;
                                 width: 12px;
                                 border-radius: 6px;
