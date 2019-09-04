@@ -35,6 +35,19 @@ export class Platform implements EventTarget {
 
     private listeners: { type?: string, eventListeners?: EventListenerOrEventListenerObject[] } = {}
 
+    // 屏幕的宽度
+    private _clientWidth: number = document && document.body && document.body.clientWidth;
+   
+    public get clientWidth(): number {
+        return this._clientWidth;
+    }
+
+    //  屏幕的高度
+    private _clientHeight: number = document && document.body && document.body.clientHeight;
+
+    public get clientHeight(): number {
+        return this._clientHeight;
+    }
 
 
     public constructor() {
@@ -49,7 +62,6 @@ export class Platform implements EventTarget {
                     userAgent.search(/windows ce/i) !== -1 ||
                     userAgent.search(/windows mobile/i) !== -1
                 ) ? this._device = Device.PHONE : this._device = Device.PC
-
         } else {
             throw new PlatformError("This is not browser environment!")
         }
@@ -95,11 +107,9 @@ export class Platform implements EventTarget {
 
     //  通过屏幕的大小，设置网站的设备类型
     public changeDeviceBySrcollWeight(): void {
-        const width =  document.body.clientWidth
-        // window.screen.width || document.documentElement.clientWidth
-            if (width < 768) {
+            if (this._clientWidth < 768) {
                 this._device = Device.PHONE
-            } else if (width < 1024) {
+            } else if (this._clientWidth < 1024) {
                 this._device = Device.IPAD
             } else {
                 this._device = Device.PC
