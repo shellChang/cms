@@ -39,6 +39,19 @@ const createHtmlWebpackPlugin = function (url, chunkName, filename) {
   })
 }
 
+// 创建Css 内部打包插件
+const createStyleExtWebpackPlugin = function (url, chunkName, filename) {
+  return new StyleExtHtmlWebpackPlugin({
+    position: 'head-top',
+    minify: true,
+    // file: filename,
+    chunks: [
+      chunkName
+    ]
+  })
+}
+
+
 // 要提取的模板
 const htmlWebpackPlugins = function () {
   const htmls = [{ path: 'static/routes/pc/index/index.html', chunkName: 'route.index', filename: 'index.html' },
@@ -47,11 +60,26 @@ const htmlWebpackPlugins = function () {
   let htmlWebpacks = []
   htmls.forEach(htmlConfig => {
     htmlWebpacks.push(
-      createHtmlWebpackPlugin(htmlConfig.path, htmlConfig.chunkName, htmlConfig.filename)
+      createHtmlWebpackPlugin(htmlConfig.path, htmlConfig.chunkName, htmlConfig.filename)      
     )
   })
   return htmlWebpacks
 }
+
+// 要提取的样式
+const styleExtWebpackPlugins = function () {
+  const scsss = [{ path: 'static/routes/pc/index/index.scss', chunkName: 'route.index', filename: 'index.scss' },
+  { path: 'static/routes/pc/contact/index.scss', chunkName: 'route.contact', filename: 'contact.scss' },
+  { path: 'static/routes/pc/case/index.scss', chunkName: 'route.case', filename: 'case.scss' }]
+  let styleWebpacks = []
+  scsss.forEach(scssConfig => {
+    styleWebpacks.push(
+      createStyleExtWebpackPlugin(scssConfig.path, scssConfig.chunkName, scssConfig.filename)      
+    )
+  })
+  return styleWebpacks
+}
+
 
 module.exports = {
   entry: {
@@ -199,22 +227,20 @@ module.exports = {
       // Options similar to the same options in webpackOptions.output
       // both options are optional
       filename: '[name].[hash].css',
-      chunkFilename: '[id].css',
+      chunkFilename: '[name].[hash].css',
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       fullPage: 'fullpage.js/dist/fullpage.extensions.min.js'
     }),
     ...htmlWebpackPlugins(),
-    new StyleExtHtmlWebpackPlugin({
-      position: 'head-bottom'
-    }),
+    ...styleExtWebpackPlugins(),
     new copyWebpackPlugin()
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    chunkFilename: "[id].chunk.js", // 配置无入口的Chunk 在输出时的文件名称
+    chunkFilename: "[name].chunk.js", // 配置无入口的Chunk 在输出时的文件名称
     // publicPath: '',  //..所有文件路径的前缀， 用于配置发布到线上资源的URL 前缀
     crossOriginLoading: false   // 配置项目中JSONP的crossorigin
   }

@@ -18,15 +18,16 @@ body.translate(data);
 
 $(headerInstance.el).addClass('static');
 
-$('.swiper-container').height($(document).height() - 160);
+$('.swiper-container').height(450);
 
 
 new Swiper('.swiper-container', {
    slidesPerView: 1,
    spaceBetween: 30,
    loop: true,
-   // effect: 'fade',
-   autoplay: true,
+   lazy: true,
+   effect: 'fade',
+   // autoplay: true,
    pagination: {
       el: '.swiper-pagination',
       dynamicBullets: true,

@@ -1,38 +1,42 @@
 //  Third Lib
 .swiper-container {
-    width: 100%;
-    height: 100%;
-  }
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    &:nth-child(2) {
-        background-image: url(~@img/case11.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    &:nth-child(3) {
-      background-image: url(~@img/case12.png);
-      background-repeat: no-repeat;
-      background-size: cover;
-  }
-  &:nth-child(1) {
-    background-image: url(~@img/case13.png);
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+  &.first {
+    background-image: url(~@img/bg11.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-}
   }
+
+  &.third {
+    background-image: url(~@img/bg13.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &.second {
+    background-image: url(~@img/bg12.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
