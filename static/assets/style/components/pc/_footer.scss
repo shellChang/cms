@@ -7,11 +7,13 @@
         padding: 0px 100px;
         overflow: hidden;
         margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
         .info-content {
-            float: left;
+            // float: left;
             height: 306px;
             overflow: hidden;
-            width: 685px;
+            max-width: 515px;
             padding-top: 40px;
             li {
                 width: 25%;
@@ -37,7 +39,7 @@
             }
         }
         .r-ma {
-            float: right;
+            // float: right;
             width: 240px;
             height: 306px;
             background-image: url(~@img/footer_2weima.png);
@@ -46,7 +48,7 @@
             background-color: #212936;
         }
         .footer-call {
-            float: right;
+            // float: right;
             width: 200px;
             height: 290px;
             background-image: url(~@img/footer_tell.png);
@@ -82,8 +84,9 @@
         background-color: #171f2a;
         height: 70px;
         div {
-            min-width: 1000px;
-            max-width: 1150px;
+            // min-width: 1000px;
+            // max-width: 1150px;
+            padding: 0px 100px;
             line-height: 70px;
             color: #979da4;
             margin: 0 auto;

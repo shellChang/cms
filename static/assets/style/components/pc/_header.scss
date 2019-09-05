@@ -12,6 +12,10 @@ $header-height: 80px;
     transition: all .5s ease-in;
     top: 0;
     z-index: 1000;
+    &.static {
+        background-color: theme-color('light');
+        position: static;
+    }
 
     &.hidden {
         transition: all .5s ease-out;
@@ -77,6 +81,8 @@ $header-height: 80px;
                     a{
                         text-decoration: none;
                         color: theme-color("dark");
+                        display: inline-block;
+                        height: 100%;
                     }
                 }
 
