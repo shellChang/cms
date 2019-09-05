@@ -16,6 +16,8 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 
+
+
 $grays: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $grays: map-merge(
@@ -43,6 +45,17 @@ $yellow:  #ffc107 !default;
 $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
+
+// 不同地方使用的颜色
+$primary-color-dark:   #1976D2;
+$primary-color:        #2196F3;
+$primary-color-light:  #BBDEFB;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #E040FB; // 强调色
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+
 
 $colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -86,7 +99,15 @@ $theme-colors: map-merge(
     "warning":    $warning,
     "danger":     $danger,
     "light":      $light,
-    "dark":       $dark
+    "dark":       $dark,
+    "primary-color-dark":           $primary-color-dark,
+    "primary-color":                $primary-color,
+    "primary-color-light":          $primary-color-light,
+    "primary-color-text":           $primary-color-text,
+    "accent-color":                 $accent-color,  // 强调色
+    "primary-text-color":           $primary-text-color,  
+    "secondary-text-color":         $secondary-text-color,
+    "divider-color":                $divider-color
   ),
   $theme-colors
 );

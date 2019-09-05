@@ -1,7 +1,7 @@
 $header-height: 80px;
 
 .#{$app_prefix}-header {
-    background-color: rgba(theme-color("dark"), 0);
+    background-color: rgba(theme-color("primary-color-dark"), 0);
     box-sizing: border-box;
     height: $header-height;
     width: 100%;
@@ -12,8 +12,9 @@ $header-height: 80px;
     transition: all .5s ease-in;
     top: 0;
     z-index: 1000;
+    color: theme-color('primary-text-color');
     &.static {
-        background-color: theme-color('light');
+        background-color: theme-color('primary-color');
         position: static;
     }
 
@@ -80,7 +81,7 @@ $header-height: 80px;
                     overflow: hidden;
                     a{
                         text-decoration: none;
-                        color: theme-color("dark");
+                        color: theme-color('primary-text-color');
                         display: inline-block;
                         height: 100%;
                     }
@@ -91,13 +92,13 @@ $header-height: 80px;
                     position: relative;
                     height: 3px;
                     top: -3px;
-                    background-color: theme-color("danger");
+                    background-color: theme-color('accent-color');
                     width: 0px;
                 }
 
                 &:hover {
                     >strong {
-                        color: theme-color("danger");
+                        color: theme-color('accent-color');
                     }
 
                     span {
@@ -108,9 +109,9 @@ $header-height: 80px;
 
                 &.cur {
                     >strong {
-                        color: theme-color("danger");
+                        color: theme-color('accent-color');
                         a{
-                            color:  theme-color("danger")!important;
+                            color:  theme-color('accent-color')!important;
                         }
                     }
 
@@ -154,18 +155,18 @@ $header-height: 80px;
                             display: block !important;
                             padding-bottom: 0;
                             .item-link {
-                                color: theme-color("danger");
-                                border: 1px solid theme-color("danger");
+                                color: theme-color('primary-text-color');
+                                border: 1px solid theme-color('accent-color');
                             }
                         }
 
                         .item-link {
                             text-decoration: none;
-                            color: theme-color("dark");
+                            color: theme-color('primary-text-color');
                             display: block;
                             width: 22px;
                             height: 22px;
-                            border: 1px solid theme-color("dark");
+                            border: 1px solid theme-color("divider-color");
                             border-radius: 100%;
                             line-height: 20px;
                             text-align: center;
