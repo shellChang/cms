@@ -7,6 +7,7 @@
  */
 import { Component } from '@/common/interface/component'
 import { platformInstance } from "../core/platform";
+import { appInstance } from '@/common/core/app'
 import { compileHtml } from "../translate/templateCompile";
 import { getLangData } from "../translate/langData";
 
@@ -57,5 +58,7 @@ export class Body implements Component {
                 compileHtml(html, data);
             }
         }
+        // 语言翻译完成， 展示界面
+        $(`.${appInstance.cssPrefix}-app`).css('display','block')
     }
 }

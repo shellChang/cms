@@ -13,9 +13,42 @@ $header-height: 80px;
     top: 0;
     z-index: 1000;
     color: theme-color('primary-text-color');
+
     &.static {
         background-color: theme-color('primary-color');
         position: static;
+        >nav {
+            >ul {
+                >li {
+                    &.cur {
+                        >strong {
+                            color: theme-color('primary-color-text') !important;
+                            a {
+                                color: theme-color('primary-color-text') !important;
+                            }
+                        }
+                        span {
+                            background-color: theme-color('primary-color-text') !important;
+                        }
+                    }
+                    &:hover {
+                        >strong {
+                            color: theme-color('accent-color') ;
+    
+                            a {
+                                color: theme-color('accent-color') ;
+                            }
+                        }
+    
+                        span {
+                            width: 100%;
+                            transition: width .3s ease-in;
+                            background-color: theme-color('accent-color') ;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     &.hidden {
@@ -30,7 +63,8 @@ $header-height: 80px;
         height: 100%;
         box-sizing: border-box;
         zoom: 1;
-        color: theme-color("dark");;
+        color: theme-color("dark");
+        ;
 
         .#{$app_prefix}-logo {
             height: 100%;
@@ -79,11 +113,13 @@ $header-height: 80px;
                     white-space: nowrap;
                     text-overflow: ellipsis;
                     overflow: hidden;
-                    a{
+
+                    a {
                         text-decoration: none;
                         color: theme-color('primary-text-color');
                         display: inline-block;
                         height: 100%;
+                        width: 100%;
                     }
                 }
 
@@ -98,30 +134,32 @@ $header-height: 80px;
 
                 &:hover {
                     >strong {
-                        color: theme-color('accent-color')!important;
-                        a{
-                            color: theme-color('accent-color')!important;
+                        color: theme-color('accent-color') ;
+
+                        a {
+                            color: theme-color('accent-color') ;
                         }
                     }
 
                     span {
                         width: 100%;
                         transition: width .3s ease-in;
-                        background-color: theme-color('accent-color')!important;
+                        background-color: theme-color('accent-color') ;
                     }
                 }
 
                 &.cur {
                     >strong {
                         color: theme-color('accent-color');
-                        a{
-                            color:  theme-color('accent-color')!important;
+
+                        a {
+                            color: theme-color('accent-color') ;
                         }
                     }
 
                     span {
                         width: 100%;
-                        background-color:  theme-color('accent-color')!important;
+                        background-color: theme-color('accent-color') ;
                     }
                 }
             }
@@ -143,6 +181,7 @@ $header-height: 80px;
                     left: 0;
                     top: -12px;
                     border-radius: 13px;
+
                     &:hover {
                         >.downlist-item {
                             display: block !important;
@@ -159,6 +198,7 @@ $header-height: 80px;
                         &.cur {
                             display: block !important;
                             padding-bottom: 0;
+
                             .item-link {
                                 color: theme-color('primary-text-color');
                                 border: 1px solid theme-color('accent-color');

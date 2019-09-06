@@ -19,17 +19,24 @@ class Header implements Component {
             const langList: HTMLUListElement = $(this._el).find(".lang-downlist") && $(this._el).find(".lang-downlist")[0]
             // 设置导航栏的样式和点击事件
             const menus = $(this._el).find(`.${appInstance.cssPrefix}-menus li`);
-            let prevMenu: HTMLLIElement =  null;
-            // menus && menus[0];
+            let prevMenu: HTMLLIElement = null;
+            
             menus.each((index, node) => {
-                const href = $(node).find('a')[0] && $(node).find('a')[0].href
-                if (location.href === href) {
+                const href: string = $(node).find('a')[0] && $(node).find('a')[0].href       
+                
+                if (location.href.substring(0, location.href.length - 1) === platformInstance.origin && index === 0) {
                     if (prevMenu !== null) {
                         $(prevMenu).removeClass('cur');
                     }
                     $(node).addClass('cur')
                     prevMenu = node;
-                }                
+                } else if (href &&  location.href === href) {
+                    if (prevMenu !== null) {
+                        $(prevMenu).removeClass('cur');
+                    }
+                    $(node).addClass('cur')
+                    prevMenu = node;
+                }
                 // $(node).on('click', (e: Event) => {
                 //     if (prevMenu !== null) {
                 //         $(prevMenu).removeClass('cur');
