@@ -1,5 +1,5 @@
 ## 山东科诺信息科技公司
-  [项目地址](https://shellchang.github.io/cms/dist/)
+  [项目地址](https://shellchang.github.io/cms/dist/index.html)
 ## 项目结构
 > + static 前端代码
 > > + assets 资源文件,包含图片、样式、 第三方框架文件
