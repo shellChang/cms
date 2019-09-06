@@ -5,24 +5,24 @@
 > > assets 资源文件,包含图片、样式、 第三方框架文件
 > > > style   项目用到的样式文件
 > > > components 项目中公共组件的样式
-> > > > index 各个环境下的通用样式
-> > > > ipad 平板环境下的样式
-> > > > pc 电脑环境下的样式
-> > > > phone 手机环境下的样式
-> > > _variables.scss 变量文件
-> > common 公用的脚本文件
-> > > core 核心文件
-> > > dom 对本地HTML dom的封装
-> > > interface 接口
-> > > translate 国际化所用脚本
-> > components 复用组件
-> > > pc window环境下的组件
-> > > phone android and iphone环境下的组件
-> > routes 具体业务页面路由
-> > > pc window环境下展示的页面
+> > > >  index 各个环境下的通用样式
+> > > >  ipad 平板环境下的样式
+> > > >  pc 电脑环境下的样式
+> > > >  phone 手机环境下的样式
+> > >  _variables.scss 变量文件
+> >  common 公用的脚本文件
+> > >  core 核心文件
+> > >  dom 对本地HTML dom的封装
+> > >  interface 接口
+> > >  translate 国际化所用脚本
+> >  components 复用组件
+> > >  pc window环境下的组件
+> > >  phone android and iphone环境下的组件
+> >  routes 具体业务页面路由
+> > >  pc window环境下展示的页面
 > > > phone android and iphone环境下展示的页面
-> > index.scss 每个页面都要用到的样式
-> > index.ts 每个页面都要用到的脚本
+> >  index.scss 每个页面都要用到的样式
+> >  index.ts 每个页面都要用到的脚本
 >  src 后端代码，使用nestjs框架
 >  app.config 项目配置变量
 >  webpack.config.js  webpack  基础配置
