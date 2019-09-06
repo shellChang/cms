@@ -92,18 +92,22 @@ $header-height: 80px;
                     position: relative;
                     height: 3px;
                     top: -3px;
-                    background-color: theme-color('accent-color');
+                    background-color: theme-color('primary-text-color');
                     width: 0px;
                 }
 
                 &:hover {
                     >strong {
-                        color: theme-color('accent-color');
+                        color: theme-color('accent-color')!important;
+                        a{
+                            color: theme-color('accent-color')!important;
+                        }
                     }
 
                     span {
                         width: 100%;
                         transition: width .3s ease-in;
+                        background-color: theme-color('accent-color')!important;
                     }
                 }
 
@@ -117,6 +121,7 @@ $header-height: 80px;
 
                     span {
                         width: 100%;
+                        background-color:  theme-color('accent-color')!important;
                     }
                 }
             }
