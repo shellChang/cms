@@ -5,7 +5,10 @@
 > > assets 资源文件,包含图片、样式、 第三方框架文件
 > > > style  项目用到的样式文件
 > > > > components 项目中公共组件的样式
-
+> > > > > 1、index 各个环境下的通用样式
+> > > > > 2、ipad 平板环境下的样式
+> > > > > 3、pc 电脑环境下的样式
+> > > > > 4、phone 手机环境下的样式
 
 >  src 后端代码，使用nestjs框架
 >  app.config 项目配置变量
@@ -14,7 +17,6 @@
 >  webpack.prod.config.js  生产环境下的webpack配置
 >  tsconfig.json ts编译配置
 >  typings.d.ts ts变量声明 
-
 <!--
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
