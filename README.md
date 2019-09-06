@@ -5,10 +5,10 @@
 > > assets 资源文件,包含图片、样式、 第三方框架文件
 > > > style   项目用到的样式文件
 > > > components 项目中公共组件的样式
-> > > >  index 各个环境下的通用样式
-> > > >  ipad 平板环境下的样式
-> > > >  pc 电脑环境下的样式
-> > > >  phone 手机环境下的样式
+> > > 1、index 各个环境下的通用样式
+> > > 2、ipad 平板环境下的样式
+> > > 3、pc 电脑环境下的样式
+> > > 4、phone 手机环境下的样式
 > > >  _variables.scss 变量文件
 > >  common 公用的脚本文件
 > > >  core 核心文件
@@ -30,7 +30,7 @@
 >  webpack.prod.config.js  生产环境下的webpack配置
 >  tsconfig.json ts编译配置
 >  typings.d.ts ts变量声明
-/**
+<!--
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
@@ -56,7 +56,7 @@
 </p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
+<!--
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
@@ -106,4 +106,4 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
   Nest is [MIT licensed](LICENSE).
-*/
+-->
