@@ -40,7 +40,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   ],
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    compress: true,
+    compress: true,   // 是否开启 Gzip
     port: 9000,
     host: '127.0.0.1',
     hot: true,
@@ -48,8 +48,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     index: 'index.html',
     open: true,
     inline: true,
+    // color: true,
+    overlay: true,
+    injectHot: (compilerConfig) => compilerConfig.name === 'only-include',
+    liveReload: true,
+    // profile: true,   //  是否捕获webpack构建的性能信息
+    // cache: true,    //  是否开启缓存加快构建速度
     watchOptions: {
-      poll: true
+      poll: 1000,
+      ignored: /node modules/,  //  不监听的文件夹
+      aggregateTimeout: 300,    //  监听变化的延迟
     }
   }
 })

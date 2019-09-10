@@ -5,6 +5,7 @@
  * @LastEditors: zb
  * @LastEditTime: 2019-09-04 22:57:48
  */
+
 /** 静态资源的打包配置 */
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
@@ -20,6 +21,7 @@ const htmlLoader = require('html-withimg-loader');
 const copyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin')
+const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');    //  作用域提升插件, 使代码体积更小
 
 const webpack = require('webpack');
 // const extractSCSS = new ExtractTextPlugin('stylesheets/[name]-two.css');
@@ -197,13 +199,19 @@ module.exports = {
       }
     ],
   },
-  resolve: {
+  resolveLoader:{
+    modules: ['node_modules'],      //  去哪个目录下寻找loader
+    extensions: ['.js', '.json'],
+    mainFields: ['loader', 'main']         
+  },
+  resolve: {    
     extensions: ['.ts', 'scss', '.js', 'css', 'jpg', 'html', '.tsx'], // 导入语句没带文件后缀时， Webpack 会自动带上后缀后去尝试访问文件是否存在。
     modules: [      //  配置Webpack 去哪些目录下寻找第三方模块, 默认只会去node_modules 目录下寻找
       "node_modules",
     ],
     symlinks: true,
     mainFields: [   // 配置在package.json文件读取的key值，从而引入相关配置文件
+      "jsnext:main",
       "browser",
       "module",
       "main"
@@ -223,6 +231,7 @@ module.exports = {
       dry: false,                            //设置为false,启用删除文件
       cleanAfterEveryBuildPatterns: ['dist']
     }),
+    new ModuleConcatenationPlugin(),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
@@ -239,8 +248,8 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].bundle.js',
-    chunkFilename: "[name].chunk.js", // 配置无入口的Chunk 在输出时的文件名称
+    filename: '[name].[hash:8].bundle.js',
+    chunkFilename: "[name].[hash:8].chunk.js", // 配置无入口的Chunk 在输出时的文件名称
     // publicPath: '',  //..所有文件路径的前缀， 用于配置发布到线上资源的URL 前缀
     crossOriginLoading: false   // 配置项目中JSONP的crossorigin
   }
