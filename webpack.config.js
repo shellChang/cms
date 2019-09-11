@@ -3,7 +3,7 @@
  * @Author: zb
  * @Date: 2019-08-31 18:57:40
  * @LastEditors: zb
- * @LastEditTime: 2019-09-04 22:57:48
+ * @LastEditTime: 2019-09-12 00:22:47
  */
 
 /** 静态资源的打包配置 */
@@ -29,7 +29,7 @@ const webpack = require('webpack');
 // 创建htmlWebpack插件
 const createHtmlWebpackPlugin = function (url, chunkName, filename) {
   return new htmlWebpackPlugin({
-    filename: `${filename}`,      // 如果加路径的话就在文件名前面写上你想加的路径， E.g `m/${filename}`
+    filename: `${filename}`,      // 如果加路径的话就在文件名前面写上你想加的路径， e.g `m/${filename}`
     template: path.join(__dirname, url),
     chunks: [
       'runtime',
@@ -59,7 +59,7 @@ const htmlWebpackPlugins = function () {
   const htmls = [{ path: 'static/routes/pc/index/index.html', chunkName: 'route.index', filename: 'index.html' },
   { path: 'static/routes/pc/contact/index.html', chunkName: 'route.contact', filename: 'contact.html' },
   { path: 'static/routes/pc/case/index.html', chunkName: 'route.case', filename: 'case.html' },
-  { path: 'static/routes/phone/index/index.html', chunkName: 'route.m.index', filename: 'm/index.html' }]
+  { path: 'static/routes/phone/index/index.html', chunkName: 'route.m.index', filename: 'm.index.html' }]
 
   let htmlWebpacks = []
   htmls.forEach(htmlConfig => {
@@ -75,7 +75,7 @@ const styleExtWebpackPlugins = function () {
   const scsss = [{ path: 'static/routes/pc/index/index.scss', chunkName: 'route.index', filename: 'index.scss' },
   { path: 'static/routes/pc/contact/index.scss', chunkName: 'route.contact', filename: 'contact.scss' },
   { path: 'static/routes/pc/case/index.scss', chunkName: 'route.case', filename: 'case.scss' },
-  { path: 'static/routes/phone/index/index.scss', chunkName: 'route.m.index', filename: 'm/index.scss' }]
+  { path: 'static/routes/phone/index/index.scss', chunkName: 'route.m.index', filename: 'm.index.scss' }]
   let styleWebpacks = []
   scsss.forEach(scssConfig => {
     styleWebpacks.push(
@@ -168,28 +168,9 @@ module.exports = {
               sourceMapContents: false
             }
           }]
-        // include: [path.resolve(__dirname, "static/index.scss"),
-        //           path.resolve(__dirname, "static/service/styles/index.scss")
-        // ],
-        // exclude: /node_modules/
       },
       {
-        test: /\.html$/,
-        use: [         
-          // {
-          //   loader: 'html-loader',
-          //   options: {
-          //     minimize: true
-          //   }
-          // },
-          {
-            loader: 'html-withimg-loader'
-          },
-        ],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.(png|jpg|gif|ttf)$/,
+        test: /\.(ttf)$/,
         use: [
           {
             loader: 'file-loader',
@@ -212,10 +193,20 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
+              name: '[name].[hash:8].[ext]',
               limit: 8192
             }
           }
         ]
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-withimg-loader'
+          }
+        ],
+        exclude: /node_modules/
       },
     ],
   },

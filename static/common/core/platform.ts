@@ -3,7 +3,7 @@
  * @Author: zb
  * @Date: 2019-08-30 19:23:04
  * @LastEditors: zb
- * @LastEditTime: 2019-09-01 23:18:50
+ * @LastEditTime: 2019-09-12 00:33:55
  */
 
 const config = require('../../../app.config')
@@ -144,16 +144,16 @@ export class Platform implements EventTarget {
     }
 
     private swithEnvironment(): void {
-        if(this._device === Device.PC && location.href.startsWith(`${this._origin}/m`)) {
-            const url = location.href.substring(this._origin.length + 2, location.href.length)
-            location.replace(`${this._origin}${url}`)
+        if(this._device === Device.PC && location.href.startsWith(`${this._origin}/m.`)) {
+            const url = location.href.substring(this._origin.length + 3, location.href.length)
+            location.replace(`${this._origin}/${url}`)
             
-        } else if ( (this._device === Device.IPAD || this._device === Device.PHONE) && !location.href.startsWith(`${this._origin}/m`) ) {
-            let url = location.href.substring(this._origin.length, location.href.length)
-            if(url === '/') {
-                url = ''
+        } else if ( (this._device === Device.IPAD || this._device === Device.PHONE) && !location.href.startsWith(`${this._origin}/m.`) ) {
+            let url = location.href.substring(this._origin.length, location.href.length).replace('/', '')
+            if(url === '') {
+                url = 'index.html'
             }
-            location.replace(`${this._origin}/m${url}`)
+            location.replace(`${this._origin}/m.${url}`)
         }
     }
 
