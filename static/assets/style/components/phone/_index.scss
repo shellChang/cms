@@ -1,4 +1,5 @@
 // 手机样式
-@media screen and  (max-width: $phone-screen) {
+@media screen and  (max-width: $ipad-screen) {
+    @import './header';
 
 }

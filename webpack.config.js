@@ -58,11 +58,13 @@ const createStyleExtWebpackPlugin = function (url, chunkName, filename) {
 const htmlWebpackPlugins = function () {
   const htmls = [{ path: 'static/routes/pc/index/index.html', chunkName: 'route.index', filename: 'index.html' },
   { path: 'static/routes/pc/contact/index.html', chunkName: 'route.contact', filename: 'contact.html' },
-  { path: 'static/routes/pc/case/index.html', chunkName: 'route.case', filename: 'case.html' }]
+  { path: 'static/routes/pc/case/index.html', chunkName: 'route.case', filename: 'case.html' },
+  { path: 'static/routes/phone/index/index.html', chunkName: 'route.m.index', filename: 'm/index.html' }]
+
   let htmlWebpacks = []
   htmls.forEach(htmlConfig => {
     htmlWebpacks.push(
-      createHtmlWebpackPlugin(htmlConfig.path, htmlConfig.chunkName, htmlConfig.filename)      
+      createHtmlWebpackPlugin(htmlConfig.path, htmlConfig.chunkName, htmlConfig.filename)
     )
   })
   return htmlWebpacks
@@ -72,11 +74,12 @@ const htmlWebpackPlugins = function () {
 const styleExtWebpackPlugins = function () {
   const scsss = [{ path: 'static/routes/pc/index/index.scss', chunkName: 'route.index', filename: 'index.scss' },
   { path: 'static/routes/pc/contact/index.scss', chunkName: 'route.contact', filename: 'contact.scss' },
-  { path: 'static/routes/pc/case/index.scss', chunkName: 'route.case', filename: 'case.scss' }]
+  { path: 'static/routes/pc/case/index.scss', chunkName: 'route.case', filename: 'case.scss' },
+  { path: 'static/routes/phone/index/index.scss', chunkName: 'route.m.index', filename: 'm/index.scss' }]
   let styleWebpacks = []
   scsss.forEach(scssConfig => {
     styleWebpacks.push(
-      createStyleExtWebpackPlugin(scssConfig.path, scssConfig.chunkName, scssConfig.filename)      
+      createStyleExtWebpackPlugin(scssConfig.path, scssConfig.chunkName, scssConfig.filename)
     )
   })
   return styleWebpacks
@@ -89,7 +92,8 @@ module.exports = {
     'main.css': ['./static/index.scss'],
     'route.index': ['./static/routes/pc/index/index.ts'],
     'route.contact': ['./static/routes/pc/contact/index.ts'],
-    'route.case': ['./static/routes/pc/case/index.ts']
+    'route.case': ['./static/routes/pc/case/index.ts'],
+    'route.m.index': ['./static/routes/phone/index/index.ts']
   },
   watch: true,
   context: path.resolve(__dirname), // 处理项目文件的基目录
@@ -156,7 +160,7 @@ module.exports = {
           },
           'css-loader',
           'postcss-loader',
-          'resolve-url-loader',
+          // 'resolve-url-loader',
           {
             loader: 'sass-loader',
             options: {
@@ -171,15 +175,21 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        use: [
+        use: [         
+          // {
+          //   loader: 'html-loader',
+          //   options: {
+          //     minimize: true
+          //   }
+          // },
           {
-            loader: 'html-withimg-loader',
-          }
+            loader: 'html-withimg-loader'
+          },
         ],
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|ttf)$/,
         use: [
           {
             loader: 'file-loader',
@@ -192,19 +202,29 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'image-webpack-loader',
-        options: {
-          bypassOnDebug: true,
-        }
-      }
+        use: [
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+            }
+          },
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      },
     ],
   },
-  resolveLoader:{
+  resolveLoader: {
     modules: ['node_modules'],      //  去哪个目录下寻找loader
     extensions: ['.js', '.json'],
-    mainFields: ['loader', 'main']         
+    mainFields: ['loader', 'main']
   },
-  resolve: {    
+  resolve: {
     extensions: ['.ts', 'scss', '.js', 'css', 'jpg', 'html', '.tsx'], // 导入语句没带文件后缀时， Webpack 会自动带上后缀后去尝试访问文件是否存在。
     modules: [      //  配置Webpack 去哪些目录下寻找第三方模块, 默认只会去node_modules 目录下寻找
       "node_modules",

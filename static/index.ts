@@ -14,6 +14,7 @@ import 'fullpage.js/vendors/scrolloverflow'
 import 'fullpage.js/dist/fullpage.extensions.min'
 import ScrollReveal from 'scrollreveal'
 import 'normalize.css'
+import '@assets/lib/mui/js/mui.min'
 // Common Script
 import {headerInstance, platformInstance} from '@/common';
 

@@ -72,5 +72,7 @@ declare var System: any;
 declare var $: (selector : string|Element|Document|Window) => any;
 declare var fullPage: (containerSelector: string, options: FullPageOptions) => void;
 declare var ScrollReveal: (options: ScrollRevealOptions) => any;
+declare var mui: any;
+declare var plus: any;
 
 

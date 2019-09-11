@@ -1,96 +1,18 @@
+.#{$app_prefix}-logo {
+    
+    cursor: pointer;
 
-// $header-height: 60px;
+    // >img {
+        width: 80px;
+        position: absolute;
+        top: 50%;
+        margin-top: -22px;
+        left: 10px;
+    // }
+}
 
-// .#{$app_prefix}-header {
-//     background-color: transparent;
-//     box-sizing: border-box;
-//     height: $header-height;
-//     width: 100%;
-//     vertical-align: middle;
-//     line-height: $header-height;
-//     position: absolute;
-//     margin: auto auto;
-//     transition: all .5s ease-in;
-//     top: 0;
-//     z-index: 1000;
-//     box-shadow: none;
-//     &.hidden{
-//         transition: all .5s ease-out;
-//         transform: translateY(-100%);
-//     }
-
-//     >nav {
-//         margin: 0 auto;
-//         width: 100%;
-//         position: relative;
-//         height: 100%;
-//         .#{$app_prefix}-logo{
-//             height: 100%;
-//             line-height: $header-height;
-//             float: left;
-//             cursor: pointer;
-//             @include padding-right-sm;
-//             // margin-top: 8px;
-//             >img{
-//                 position: relative;
-//                 height: 100%;
-//                 width: 80px;
-//                 display: inline-block;
-//                 vertical-align: middle;
-//             }
-//         }
-//         >ul {
-//             margin-left: 120px;
-//             position: relative;
-//             display: flex;
-//             justify-content: flex-start;
-//             align-items: center;
-//             height: 100%;
-//             // float: right;
-
-//             >li {
-//                 display: inline-block;
-//                 line-height: 80px;
-//                 height: 100%;
-//                 @include padding-horizonal-md;
-//                 text-align: center;
-//                 min-width: 110px;
-//                 cursor: pointer;
-//                 > strong {
-//                     position: relative;
-//                     font-weight: 400;
-//                     display: block;
-//                     width: 100%;
-//                     font-size: 18px;
-//                     text-align: center;
-//                     height: 100%;
-//                 }
-//                 span {
-//                     display: block;
-//                         position: relative;
-//                         height: 3px;
-//                         top: -3px;
-//                         background-color: theme-color("danger");
-//                         width: 0px;
-//                 }
-//                 &:hover{
-//                     >strong {
-//                         color: theme-color("danger");
-//                     }
-//                     span {
-//                         width: 100%;
-//                         transition: width .3s ease-in;
-//                      }
-//                 }
-//                 &.cur {
-//                     >strong {
-//                         color: theme-color("danger");
-//                     }
-//                     span {
-//                         width: 100%;
-//                      }
-//                 }
-//             }
-//         }
-//     }
-// };
+.mui-bar-nav.mui-bar .mui-icon {
+    font-weight: 800;
+    background: theme-color('accent-color');
+    padding: 8px !important;
+}

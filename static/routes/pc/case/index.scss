@@ -26,19 +26,19 @@
   background-size: cover;
 
   &.first {
-    background-image: url(~@img/bg11.jpg);
+    background-image: url("~@img/bg11.jpg");
     background-repeat: no-repeat;
     background-size: cover;
   }
 
   &.third {
-    background-image: url(~@img/bg13.jpg);
+    background-image: url("~@img/bg13.jpg");
     background-repeat: no-repeat;
     background-size: cover;
   }
 
   &.second {
-    background-image: url(~@img/bg12.jpg);
+    background-image: url("~@img/bg12.jpg");
     background-repeat: no-repeat;
     background-size: cover;
   }

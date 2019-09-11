@@ -22,7 +22,7 @@
 
         &:nth-child(1) {
             .fp-bg {
-                background-image: url(~@img/bg6.jpg)
+                background-image: url("~@img/bg6.jpg")
             }
 
             .title {
@@ -48,7 +48,7 @@
 
         &:nth-child(2) {
             .fp-bg {
-                background-image: url(~@img/bg7.png)
+                background-image: url("~@img/bg7.png")
             }
 
             .content {
@@ -130,7 +130,7 @@
 
         &:nth-child(3) {
             .fp-bg {
-                background-image: url(~@img/bg9.png);
+                background-image: url("~@img/bg9.png");
                 // .render-color{
                 //     width: 100%;
                 //     height: 100%;
@@ -268,7 +268,7 @@
 
         &:nth-child(4) {
             .fp-bg {
-                background-image: url(~@img/bg8.png)
+                background-image: url("~@img/bg8.png")
             }
 
             .content {
@@ -286,7 +286,7 @@
                             width: 543px;
                             margin-right: 24px;
                             display: inline-block;
-                            background-image: url(~@img/picture6.jpg);
+                            background-image: url("~@img/picture6.jpg");
                             height: 324px;
                             >div{
                                 background: linear-gradient(135deg,rgba(94,136,255,.85),rgba(111,48,254,.85));
@@ -333,7 +333,6 @@
                             }
                         }
                     }
-
                 }
             }
         }

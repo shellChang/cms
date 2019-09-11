@@ -43,7 +43,6 @@ export class Body implements Component {
      */
     public translate(data?: object) {
         Object.assign(this.data, data);
-
         if (this._el) {
             const html: Element| string = this._el.querySelector('main') 
             if (typeof html === 'string') {
@@ -57,7 +56,7 @@ export class Body implements Component {
             } else {
                 compileHtml(html, data);
             }
-        }
+        }        
         // 语言翻译完成， 展示界面
         $(`.${appInstance.cssPrefix}-app`).css('display','block')
     }

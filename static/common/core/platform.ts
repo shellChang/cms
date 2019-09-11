@@ -149,7 +149,10 @@ export class Platform implements EventTarget {
             location.replace(`${this._origin}${url}`)
             
         } else if ( (this._device === Device.IPAD || this._device === Device.PHONE) && !location.href.startsWith(`${this._origin}/m`) ) {
-            const url = location.href.substring(this._origin.length, location.href.length)
+            let url = location.href.substring(this._origin.length, location.href.length)
+            if(url === '/') {
+                url = ''
+            }
             location.replace(`${this._origin}/m${url}`)
         }
     }

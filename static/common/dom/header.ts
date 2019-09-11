@@ -13,9 +13,8 @@ class Header implements Component {
     constructor() {
         this._el = $(`.${appInstance.cssPrefix}-header`) && $(`.${appInstance.cssPrefix}-header`)[0]
     }
-
-    public bootstrap(): void {
-        if (this._el !== null) {
+    public bootstrap(): void {        
+        if (this._el !== null && this._el !== undefined ) {
             const langList: HTMLUListElement = $(this._el).find(".lang-downlist") && $(this._el).find(".lang-downlist")[0]
             // 设置导航栏的样式和点击事件
             const menus = $(this._el).find(`.${appInstance.cssPrefix}-menus li`);
