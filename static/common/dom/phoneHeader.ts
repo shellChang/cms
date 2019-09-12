@@ -5,10 +5,10 @@
  * @LastEditors: zb
  * @LastEditTime: 2019-09-05 00:54:22
  */
-import { Component } from '@/common/interface/component'
+import { Header } from '@/common/interface'
 import { appInstance, platformInstance, Language } from "@/common/core";
 
-class Header implements Component {
+class PhoneHeader implements Header {
     private readonly _el: HTMLElement;
     constructor() {
         this._el = $(`.${appInstance.cssPrefix}-header`) && $(`.${appInstance.cssPrefix}-header`)[0]
@@ -93,6 +93,4 @@ class Header implements Component {
     }
 }
 
-const headerInstance: Header = new Header();
-
-export { Header, headerInstance }
+export { PhoneHeader }

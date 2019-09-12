@@ -1,3 +1,4 @@
+
 /*
  * @Description: TODO 
  * @Author: zb
@@ -10,11 +11,9 @@ import 'swiper/dist/css/swiper.min.css';
 
 
 import './index.scss'
-import { platformInstance, Language, getLangData, headerInstance, Body } from '@/common'
+import { platformInstance, Language, getLangData, Body } from '@/common'
 import Swiper from 'swiper'
-const body = new Body();
-const data = getLangData(platformInstance.lang)
-body.translate(data);
+const headerInstance = platformInstance.header
 
 $(headerInstance.el).addClass('static');
 

@@ -6,10 +6,11 @@
  * @LastEditTime: 2019-09-01 16:40:41
  */
 import './index.scss'
-import { platformInstance, Language, getLangData, headerInstance, Body} from '@/common'
-const body = new Body();
-const data = getLangData(platformInstance.lang)
-body.translate(data);
+import { platformInstance, Language, getLangData,  Body} from '@/common'
+const headerInstance = platformInstance.header
+// const body = new Body();
+// const data = getLangData(platformInstance.lang)
+// body.translate(data);
 
 
 

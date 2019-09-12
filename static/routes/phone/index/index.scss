@@ -1,3 +1,5 @@
+@import '~@assets/style/_variables.scss';
+
 .mui-content{
     padding-top: 0px !important;
 }
@@ -11,4 +13,62 @@
     position: relative;
     top: 50%;
     margin-top: -20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+			span.mui-icon {
+				font-size: 14px;
+				color: #007aff;
+				margin-left: -15px;
+				padding-right: 10px;
+			}
+			.mui-off-canvas-right {
+				color: #fff;
+			}
+			.title {
+				margin: 35px 15px 10px;
+			}
+			.title+.content {
+				margin: 10px 15px 35px;
+				color: #bbb;
+				text-indent: 1em;
+				font-size: 14px;
+				line-height: 24px;
+			}
+			input {
+				color: #000;
+            }
+            
+.menu-title  {
+    background-color: #0aa3e8;
+    height: 75px;
+    position: relative;
+    margin-bottom: 24px;
+    >img{
+        height: 100%;
+        width: 100%;
+    }
+}
+.menu-li {
+    height: 60px;
+    line-height: 38px;
+    font-size: 16px;
+}
+
+.language {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
 }

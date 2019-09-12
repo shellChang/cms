@@ -5,5 +5,7 @@
  * @LastEditors: zb
  * @LastEditTime: 2019-09-01 11:17:45
  */
-export { Body } from './body'
-export { Header, headerInstance } from './header'
+export { PcBody } from './pcBody'
+export { PcHeader} from './pcHeader'
+export { PhoneBody } from './phoneBody'
+export { PhoneHeader } from './phoneHeader'

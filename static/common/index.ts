@@ -5,7 +5,7 @@
  * @LastEditors: zb
  * @LastEditTime: 2019-09-01 11:22:22
  */
-export { Header, headerInstance, Body } from './dom'
-export { platformInstance, Language} from './core'
+export { PcHeader, PcBody } from '@dom'
+export {Header, Body} from '@interface'
+export { platformInstance, Language} from '@core'
 export { getLangData, compileHtml } from './translate'
-// export { } from './interface'

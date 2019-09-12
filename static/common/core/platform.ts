@@ -30,6 +30,9 @@ export class PlatformError extends Error {
     }
 }
 
+import { Header, Body } from '@interface'
+import { PcHeader, PcBody, PhoneBody, PhoneHeader } from '@dom'
+
 
 export class Platform implements EventTarget {
 
@@ -37,20 +40,64 @@ export class Platform implements EventTarget {
 
     // 屏幕的宽度
     private _clientWidth: number = document && document.body && document.body.clientWidth;
+
+    //  屏幕的高度
+    private _clientHeight: number = document && document.body && document.body.clientHeight;
+
+    private _lang: Language = Language.CHINESE;  // 语言
+
+    private _device: Device; // 设备
+
+    private _origin: string; //域名
+
+    private _header: Header;
+
+    private _body: Body;
+
+
+    public get body(): Body {
+        return this._body;
+    }
+    public set body(value: Body) {
+        this._body = value;
+    }
+
+    public get origin(): string {
+        return this._origin;
+    }
+    public set origin(value: string) {
+        this._origin = value;
+    }
+
+    public get device(): Device {
+        return this._device;
+    }
+    public set device(value: Device) {
+        this._device = value;
+    }
+
+    public get header(): Header {
+        return this._header;
+    }
+    public set header(value: Header) {
+        this._header = value;
+    }
+
+    public get lang(): Language {
+        return this._lang;
+    }
    
     public get clientWidth(): number {
         return this._clientWidth;
     }
 
-    //  屏幕的高度
-    private _clientHeight: number = document && document.body && document.body.clientHeight;
 
     public get clientHeight(): number {
         return this._clientHeight;
     }
 
 
-    public constructor() {
+    public constructor() {        
         // 根据客户端标记获取运行环境
         if (navigator && navigator.userAgent) {
             const userAgent: string = navigator.userAgent.toLowerCase();
@@ -80,30 +127,26 @@ export class Platform implements EventTarget {
                 this.swithEnvironment()
             })
         }
+
         $(document).on('DOMContentLoaded',  (e) => {
             this.swithEnvironment()
         })
+        // 获取dom 头 和dom 体
+        $(window).on('load', (e) => {
+            if(this._device === Device.PC ) {
+                this._body = new PcBody();
+                this._header = new PcHeader();
+                this._header.bootstrap()
+                this._body.bootstrap({lang: this._lang})
+            } else {
+                this._body = new PhoneBody();
+                this._header = new PhoneHeader();
+                this._header.bootstrap()
+                this._body.bootstrap()
+            }
+        })
 
     }
-
-    private _lang: Language = Language.CHINESE;  // 语言
-
-    private _device: Device; // 设备
-
-    private _origin: string; //域名
-
-    
-    public get origin(): string {
-        return this._origin;
-    }
-    public set origin(value: string) {
-        this._origin = value;
-    }
-
-    public get lang(): Language {
-        return this._lang;
-    }
-
 
     //  通过屏幕的大小，设置网站的设备类型
     public changeDeviceBySrcollWeight(): void {
@@ -122,17 +165,6 @@ export class Platform implements EventTarget {
     public changeLang(value: Language): void {
         this._lang = value
         this.dispatchEvent(new CustomEvent('langChange', { detail: { lang: this._lang } }))
-    }
-
-    // public set lang(value: Language) {
-    //     this._lang = value;
-    // }
-
-    public get device(): Device {
-        return this._device;
-    }
-    public set device(value: Device) {
-        this._device = value;
     }
 
     public langName(): string {

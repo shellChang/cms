@@ -5,13 +5,13 @@
  * @LastEditors: zb
  * @LastEditTime: 2019-09-01 11:14:38
  */
-import { Component } from '@/common/interface/component'
+import { Body } from '@/common/interface'
 import { platformInstance } from "../core/platform";
 import { appInstance } from '@/common/core/app'
 import { compileHtml } from "../translate/templateCompile";
 import { getLangData } from "../translate/langData";
 
-export class Body implements Component {
+class PcBody implements Body {
     private readonly _el: HTMLBodyElement;
 
     private data: object = {}
@@ -26,9 +26,9 @@ export class Body implements Component {
         })
     }
 
-    public bootstrap(): void {
+    public bootstrap(params?: object): void {
         if (this._el !== null) {
-
+            this.translate(getLangData(params['lang']))
         }
     }
 
@@ -61,3 +61,5 @@ export class Body implements Component {
         $(`.${appInstance.cssPrefix}-app`).css('display','block')
     }
 }
+
+export {PcBody}

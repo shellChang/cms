@@ -230,7 +230,11 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, "static/"),
       '@assets': path.resolve(__dirname, "static/assets"),
-      '@img': path.resolve(__dirname, "static/assets/img")
+      '@img': path.resolve(__dirname, "static/assets/img"),
+      '@core': path.resolve(__dirname, "static/common/core"),
+      '@dom': path.resolve(__dirname, "static/common/dom"),
+      '@interface': path.resolve(__dirname, "static/common/interface"),
+      '@translate': path.resolve(__dirname, "static/common/translate")
     },
     descriptionFiles: ['package.json'],  //  配置描述第三方模块的文件名称，也就是package.json 文件
     enforceExtension: false       //  导入语句是否必须带文件后缀

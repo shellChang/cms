@@ -18,7 +18,15 @@
       "@": ["static"],
       "@/*": ["static/*"],
       "@assets": ["static/assets"],
-      "@assets/*": ["static/assets/*"]
+      "@assets/*": ["static/assets/*"],
+      "@core": ["static/common/core"],
+      "@core/*": ["static/common/core/*"],
+      "@dom": ["static/common/dom"],
+      "@dom/*": ["static/common/dom/*"],
+      "@interface": ["static/common/interface"],
+      "@interface/*": ["static/common/interface/*"],
+      "@translate": ["static/common/translate"],
+      "@translate/*": ["static/common/translate/*"]
     },
     "lib": [
       "es2017",

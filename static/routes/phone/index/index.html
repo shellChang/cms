@@ -18,32 +18,96 @@
 
 <body>
     <main class="ke-nuo-app">
+        <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+            <!--菜单部分-->
+            <aside id="offCanvasSide" class="mui-off-canvas-right">
+                <div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+                    <div class="mui-scroll">
+                        <div class="menu-title">
+                            <img src="https://zos.alipayobjects.com/rmsportal/NUqycmdbqYzlmiQ.png">
+                        </div>
+                        <ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+                            <li class="mui-table-view-cell menu-li">
+                                <a class="mui-navigate-right">
+                                    {{key_0}}
+                                </a>
+                            </li>
+                            <li class="mui-table-view-cell menu-li">
+                                <a class="mui-navigate-right">
+                                    {{key_2}}
+                                </a>
+                            </li>
+                            <li class="mui-table-view-cell menu-li">
+                                <a class="mui-navigate-right">
+                                    {{key_3}}
+                                </a>
+                            </li>
+                            <li class="mui-table-view-cell menu-li">
+                                <a class="mui-navigate-right">
+                                    {{key_4}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="language mui-navigate-right">
+                        <select id="J_languageSelect">
 
-        <header class="mui-bar mui-bar-nav mui-bar-transparent">
-            <img class="ke-nuo-logo" src="https://os.alipayobjects.com/rmsportal/ZQYArBaUKxyHVGW.png">
-            <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-right"></a>
-        </header>
-        <div class="mui-content">
-            <!--轮播图片-->
-            <div id="slider" class="mui-slider">
-                <div class="mui-slider-group">
-                    <!-- 第一张 -->
-                    <div class="mui-slider-item">
-                        <a href="#">
-                            <img src="../../../../static/assets/img/slider1.jpg">
-                        </a>
-                    </div>
-                    <!-- 第二张 -->
-                    <div class="mui-slider-item">
-                        <a href="#">
-                            <img src="../../../../static/assets/img/slider2.jpg">
-                        </a>
+                            <option value="zh_CN" selected="selected">中文</option>
+
+                            <option value="en_US">English</option>
+
+                            <option value="KO">KR</option>
+
+                            <option value="ja_JP">日本語</option>
+
+                        </select>
                     </div>
                 </div>
-                <div class="mui-slider-indicator">
-                    <div class="mui-indicator mui-active"></div>
-                    <div class="mui-indicator"></div>
+            </aside>
+            <div class="mui-inner-wrap mui-slide-in">
+                <header class="mui-bar mui-bar-nav mui-bar-transparent">
+                    <img class="ke-nuo-logo" src="https://os.alipayobjects.com/rmsportal/ZQYArBaUKxyHVGW.png">
+                    <a id="offCanvasBtn" href="#offCanvasSide"
+                        class="mui-icon mui-action-menu mui-icon-bars mui-pull-right"></a>
+                </header>
+                <div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+                    <div class="mui-scroll">
+                        <div class="mui-content">
+                            <!--轮播图片-->
+                            <div id="slider" class="mui-slider">
+                                <div class="mui-slider-group">
+                                    <!-- 第一张 -->
+                                    <div class="mui-slider-item">
+                                        <a href="#">
+                                            <img src="../../../../static/assets/img/slider1.jpg">
+                                        </a>
+                                    </div>
+                                    <!-- 第二张 -->
+                                    <div class="mui-slider-item">
+                                        <a href="#">
+                                            <img src="../../../../static/assets/img/slider2.jpg">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="mui-slider-indicator">
+                                    <div class="mui-indicator mui-active"></div>
+                                    <div class="mui-indicator"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mui-content-padded">
+                            <p>这是可拖动式左滑导航示例，主页面和菜单在一个HTML文件中， 优点是支持拖动手势（跟手），缺点是不支持菜单内容在多页面的复用； 当前页面为主界面，你可以在主界面放置任何内容；
+                                打开侧滑菜单有多种方式： 1、在当前页面向左拖动； 2、点击页面右上角的
+                                <span class="mui-icon mui-icon-bars"></span> 图标； 3、通过JS API触发（例如点击如下蓝色按钮体验）；
+                                <span class="android-only">4、Android手机按menu键；</span>
+                            </p>
+                            <p>侧滑菜单的移动动画，支持多种效果，切换如下选项体验不同动画效果：</p>
+
+                        </div>
+                    </div>
                 </div>
+                <!-- off-canvas backdrop -->
+                <div class="mui-off-canvas-backdrop"></div>
             </div>
         </div>
     </main>

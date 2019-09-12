@@ -10,14 +10,12 @@
  */
 
 //  import Third lib
+import '@assets/lib/mui/js/mui.min'
 import 'fullpage.js/vendors/scrolloverflow'
 import 'fullpage.js/dist/fullpage.extensions.min'
 import ScrollReveal from 'scrollreveal'
 import 'normalize.css'
-import '@assets/lib/mui/js/mui.min'
 // Common Script
-import {headerInstance, platformInstance} from '@/common';
-
-headerInstance.bootstrap();
+import {platformInstance} from '@/common';
 
 console.log(`平台运行在${platformInstance.deviceName()} ${platformInstance.langName()}`)

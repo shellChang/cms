@@ -7,5 +7,5 @@
  */
 
 export interface Component {
-    bootstrap(): void
+    bootstrap(params?: object): void
 }
