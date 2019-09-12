@@ -3,7 +3,7 @@
  * @Author: zb
  * @Date: 2019-08-30 19:23:04
  * @LastEditors: zb
- * @LastEditTime: 2019-09-12 23:36:31
+ * @LastEditTime: 2019-09-13 01:06:04
  */
 
 const config = require('../../../app.config')
@@ -114,7 +114,9 @@ export class Platform implements EventTarget {
         }
 
         // 获取url的源地址
-        if(location && location.origin) {
+        if(config['base']) {
+            this._origin = config['base']
+        } else if(location && location.origin) {
             this._origin = location.origin
         }
 
