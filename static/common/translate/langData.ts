@@ -3,7 +3,7 @@
  * @Author: zb
  * @Date: 2019-08-31 18:57:40
  * @LastEditors: zb
- * @LastEditTime: 2019-09-01 23:56:48
+ * @LastEditTime: 2019-09-12 21:35:10
  */
 import { platformInstance, Language } from '@/common'
 
@@ -24,6 +24,7 @@ const zh_language = {
 };
 
 const en_language = {
+   key_0: 'Index',
    key_1: 'Company Introduce',
    key_2: 'Demonstration of Success Cases',
    key_3: 'Company elegance',

@@ -1,15 +1,16 @@
+/*
+ * @Description: TODO 
+ * @Author: zb
+ * @Date: 2019-09-12 19:38:49
+ * @LastEditors: zb
+ * @LastEditTime: 2019-09-12 19:59:33
+ */
 import ScrollReveal from 'scrollreveal';
 import './index.scss'
 import { platformInstance, Language, getLangData, Body } from '@/common'
-const headerInstance = platformInstance.header
 
-$(window).on('load', function (e) {
-   setTimeout(() => {
-      console.log(JSON.stringify(platformInstance.header))
-   }, 500);
-   
-   debugger
-
+platformInstance.addEventListener('load', () => {
+   const headerInstance = platformInstance.header
    new fullPage('#fullpage', {
       verticalCentered: true,     // 每一页的内容是否垂直居中
       lockAnchors: true,

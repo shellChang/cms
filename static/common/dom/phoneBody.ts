@@ -3,7 +3,7 @@
  * @Author: zb
  * @Date: 2019-08-30 23:13:40
  * @LastEditors: zb
- * @LastEditTime: 2019-09-01 11:14:38
+ * @LastEditTime: 2019-09-12 23:37:57
  */
 import { Body } from '@/common/interface'
 import { platformInstance } from "../core/platform";
@@ -19,16 +19,14 @@ class PhoneBody implements Body {
     constructor() {
         this._el = $('body') && $('body')[0];
         platformInstance.addEventListener('langChange', (e: CustomEvent) => {
-            // if(this.data && Object.keys(this.data).length > 0) {
-                const data = getLangData(e.detail['lang'])
-                this.translate(data)
-            // }
+            const data = getLangData(e.detail['lang'])
+            this.translate(data)
         })
     }
 
-    public bootstrap(): void {
+    public bootstrap(params?: object): void {
         if (this._el !== null) {
-
+            this.translate(getLangData(params['lang']))
         }
     }
 
@@ -44,7 +42,7 @@ class PhoneBody implements Body {
     public translate(data?: object) {
         Object.assign(this.data, data);
         if (this._el) {
-            const html: Element| string = this._el.querySelector('main') 
+            const html: Element | string = this._el.querySelector('main')
             if (typeof html === 'string') {
                 const div: HTMLDivElement = document.createElement('div');
                 div.innerHTML = compileHtml(html, data);
@@ -56,10 +54,10 @@ class PhoneBody implements Body {
             } else {
                 compileHtml(html, data);
             }
-        }        
+        }
         // 语言翻译完成， 展示界面
-        $(`.${appInstance.cssPrefix}-app`).css('display','block')
+        $(`.${appInstance.cssPrefix}-app`).css('display', 'block')
     }
 }
 
-export {PhoneBody}
+export { PhoneBody }

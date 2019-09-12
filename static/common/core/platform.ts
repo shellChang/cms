@@ -3,7 +3,7 @@
  * @Author: zb
  * @Date: 2019-08-30 19:23:04
  * @LastEditors: zb
- * @LastEditTime: 2019-09-12 00:33:55
+ * @LastEditTime: 2019-09-12 23:36:31
  */
 
 const config = require('../../../app.config')
@@ -135,15 +135,14 @@ export class Platform implements EventTarget {
         $(window).on('load', (e) => {
             if(this._device === Device.PC ) {
                 this._body = new PcBody();
-                this._header = new PcHeader();
-                this._header.bootstrap()
-                this._body.bootstrap({lang: this._lang})
-            } else {
+                this._header = new PcHeader();                       
+            } else {                
                 this._body = new PhoneBody();
-                this._header = new PhoneHeader();
-                this._header.bootstrap()
-                this._body.bootstrap()
+                this._header = new PhoneHeader();              
             }
+            this._header.bootstrap()
+            this._body.bootstrap({lang: this._lang})
+            this.dispatchEvent(new CustomEvent('load', { detail: {  } }))        
         })
 
     }
