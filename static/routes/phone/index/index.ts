@@ -10,6 +10,7 @@ import { platformInstance, Language, getLangData } from '@/common'
 import * as mui from '@assets/lib/mui/js/mui.min'
 
 platformInstance.addEventListener('load', () => {
+    const headerInstance = platformInstance.header
     //mui初始化
     mui.init({
         swipeBack: true //启用右滑关闭功能
@@ -43,4 +44,23 @@ platformInstance.addEventListener('load', () => {
             });
         });
     }
+    // new fullPage('#fullpage', {
+    //    verticalCentered: true,     // 每一页的内容是否垂直居中
+    //    lockAnchors: true,
+    //    dragAndMove: true,
+    //    css3: true,
+    //    scrollBar: true,
+    //    onLeave: function (from, to) {
+    //       const headers = $(headerInstance.el);
+    //       if (from.index === 1 && to.index === 0) {
+    //          if (headers.hasClass('hidden')) {
+    //             headers.removeClass('hidden')
+    //          }
+    //       } else {
+    //          if (!headers.hasClass('hidden')) {
+    //             headers.addClass('hidden');
+    //          }
+    //       }
+    //    }
+    // });
 })

@@ -197,6 +197,14 @@
                             transform: rotateY(180deg);
                         }
 
+                        &:first-child {
+                            .back {
+                                ul {
+                                    text-align: right;
+                                }
+                            }
+                        }
+
                         .front,
                         .back {
                             backface-visibility: hidden;
@@ -210,7 +218,6 @@
                         .front {
                             z-index: 2;
                             padding: 8px 8px;
-
                             h3 {
                                 font-size: 24px;
                                 font-weight: 700;
@@ -223,16 +230,13 @@
                                 text-indent: 2rem;
                             }
                         }
-
                         .back {
                             // padding: 8px 16px;
                             transform: rotateY(180deg);
                             // text-align: center;
-
                             &::-webkit-scrollbar {
                                 width: 0px;
                             }
-
                             ul {
                                 li {
                                     // &:nth-child(1) , &:nth-child(2) {
@@ -259,7 +263,6 @@
                                 }
                             }
                         }
-
                         // background: linear-gradient(135deg,rgba(94,136,255,.85),rgba(111,48,254,.85));
                     }
                 }

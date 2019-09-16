@@ -10,7 +10,7 @@ module.exports = {
     host: '127.0.0.1',      //  项目的启动IP
     hot: false,             //  是否热加载
     envirenment: 'dev',
-    base:  'https://shellchang.github.io/cms',
+    // base:  '127.0.0.1:9000',
     baseUrl:{                           // 基地址
         phone: 'http://127.0.0.1:9000/m',
         pc: 'http://127.0.0.1:9000'
