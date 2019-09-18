@@ -83,18 +83,24 @@
     // }
     .main-page {
         width: 100%;
-        >li::nth(1) {
 
-            height: 349px;
+        li:nth-child(1) {
+            padding: 0px $gutter-sm;
+            // height: 349px;
             .fp-bg {
-                background-image: url("~@img/bg6.jpg");
+                // background-image: url("~@img/bg6.jpg");
                 height: 100%;
+                background-size: cover;
+                position: relative;
+
                 .title {
                     max-height: 260px;
                     overflow: hidden;
                     color: $primary-text-color;
                     text-align: center;
-    
+                    position: relative;
+                    top: calc(50% - 130px);
+
                     h2 {
                         color: $primary-text-color;
                         font-size: 16px;
@@ -104,6 +110,72 @@
                     }
                 }
             }
+        }
+
+        li:nth-child(2) {
+            padding: $gutter-sm;
+            .about_us {
+                margin: 20px auto;
+                width: 100%px;
+
+                h3 {
+                    font-size: 36px;
+                    line-height: 50px;
+                    font-weight: normal;
+                    color: $primary-text-color;
+                    text-align: center;
+                }
+            }
+
+            .about_title {
+                margin: 0 auto $gutter-lg * 1.5 auto;
+                width: 100%;
+                border-bottom: 1px solid rgba($divider-color, 0.5);
+                border-top: 1px solid rgba($divider-color, 0.5);
+                p {
+                    height: 40px;
+                    font-size: 20px;
+                    line-height: 40px;
+                    font-family: "Microsoft YaHei UI Light";
+                    color: $secondary-text-color;
+                    text-align: center;
+                }
+            }
+            .about_desc{
+                position: relative;
+                width: 100%;
+                figure{
+                    margin-bottom: $gutter-lg * 2;
+                    img {
+                        position: relative;
+                        width: 100%;
+                        margin-bottom: $gutter-lg;
+                    }
+
+                    p {
+                        color: $primary-text-color;
+                        text-indent: 2em;
+                    }
+                }
+            }
+           
+
+            // .title {
+            //     max-height: 260px;
+            //     overflow: hidden;
+            //     color: $primary-text-color;
+            //     text-align: center;
+            //     position: relative;
+            //     top: calc(50% - 130px);
+
+            //     h2 {
+            //         color: $primary-text-color;
+            //         font-size: 16px;
+            //         line-height: 48px;
+            //         letter-spacing: 2px;
+            //         text-align: center;
+            //     }
+            // }
         }
     }
 }

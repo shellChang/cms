@@ -39,10 +39,12 @@ export class Platform implements EventTarget {
     private listeners: { type?: string, eventListeners?: EventListenerOrEventListenerObject[] } = {}
 
     // 屏幕的宽度
-    private _clientWidth: number = document && document.body && document.body.clientWidth;
+    private _clientWidth: number = window && window.screen && window.screen.availWidth
+    // document && document.body && document.body.clientWidth;
 
     //  屏幕的高度
-    private _clientHeight: number = document && document.body && document.body.clientHeight;
+    private _clientHeight: number =   window && window.screen && window.screen.availHeight;
+    // document && document.body && document.body.clientHeight;
 
     private _lang: Language = Language.CHINESE;  // 语言
 

@@ -31,6 +31,7 @@ platformInstance.addEventListener('load', () => {
     //主界面和侧滑菜单界面均支持区域滚动；
     mui('#offCanvasSideScroll').scroll();
     mui('#offCanvasContentScroll').scroll();
+    mui('.mui-bar-transparent').transparent();
     //实现ios平台的侧滑关闭页面；
     if (mui.os.plus && mui.os.ios) {
         offCanvasWrapper[0].addEventListener('shown', function (e) { //菜单显示完成事件
@@ -44,6 +45,10 @@ platformInstance.addEventListener('load', () => {
             });
         });
     }
+
+    //      setting the frist slider's height
+    $('.main-page li:first-child').height(platformInstance.clientHeight - 250);
+
     // new fullPage('#fullpage', {
     //    verticalCentered: true,     // 每一页的内容是否垂直居中
     //    lockAnchors: true,
